@@ -35,6 +35,16 @@
 					    </ul>
 					</li>
 
+					{{-- Category items --}}
+
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/category*')) ? 'pcoded-toggle' : '' }}">
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Page layouts</span></a>
+						<ul class="pcoded-submenu">
+								<li><a href="{{ route('admin.category.index') }}" >Manage Category</a></li>
+								<li><a href="layout-horizontal.html" target="_blank">Horizontal</a></li>
+						</ul>
+					</li>
+
 				</ul>
 
 				

@@ -16,8 +16,11 @@
     <meta name="description" content="" />
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
     <link rel="icon" href="{{ asset('backend/assets/images/favicon.ico') }}" type="image/x-icon">
+
+  
 
     {{-- Page base css --}}
     @yield('extraCss')
@@ -25,6 +28,7 @@
     
     <!-- vendor css -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
+    
     
     
 
@@ -43,12 +47,38 @@
     @include('backend.layouts.sidebar')
     <!-- [ navigation menu ] end -->
 
-	
-	<!--main cntent--->
+	  <!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Dashboard Analytics</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        
+        <!--main cntent--->
 
-    @yield('content')
+        @yield('content')
     
-    <!--end main cntent--->
+        <!--end main cntent--->
+        
+    </div>
+  </div>
+  <!-- [ Main Content ] end -->
+  
+	
 
 
     <!-- Warning Section start -->
@@ -102,10 +132,16 @@
     <script src="{{ asset('backend/assets/js/vendor-all.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugins/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/pcoded.min.js') }}"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @include('sweetalert::alert')
 
     {{-- Page base css --}}
     @yield('extraJs')
     {{-- End Page base css --}}
+
+
+    
 
 </body>
 

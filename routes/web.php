@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * Backend routes
+ */
+
 Route::get('/', function () {
     return view('backend.pages.dashboard.dashboard');
 });
 
+Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],function(){
+    //Category Routes
+    Route::get('/category/response', 'CategoryController@getResponse')->name('category.response');
+    Route::resource('/category', 'CategoryController');
+
+
+});
+
+
+
 Auth::routes();
+
+
+
+
+
 
 Route::get('/home', 'HomeController@index');
