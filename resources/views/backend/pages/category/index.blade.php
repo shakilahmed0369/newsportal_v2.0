@@ -1,7 +1,9 @@
 @extends('backend.layouts.master')
 @section('content')
 @section('extraCss')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"> --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    
 @endsection
     
 <div class="card">
@@ -35,14 +37,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="">Add Category</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button onclick="$('#categoryName').css({'border-color': ''}) + $('.invalid-feedback').removeClass('d-block')" type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           
             <form class="form" method="POST">
-                <input  type="text" class="form-control" name="categoryName" id="categoryName" placeholder="Category Name" required="">
+                <input  type="text" class="form-control" name="categoryName" id="categoryName" placeholder="Category Name" >
                 <div class="invalid-feedback d-none">Fild can't be empty!</div>
                 
             </form>
@@ -87,7 +89,7 @@
 
   </div>
   <div class="card-body">
-    <table id="user-table" class="display dataTable" style="width:100%">
+    <table id="user-table" class="display dataTable table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>id</th>
@@ -104,8 +106,10 @@
 </div>
 
 @section('extraJs')
-
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+
 <script>
    $(document).ready(function() {
     $.ajaxSetup({
@@ -131,13 +135,14 @@
     });
 } );
 
-//++++++++geting table data from databasae (yajra datatable)++++++//
+//++++++++(End)geting table data from databasae (yajra datatable)++++++//
 
 
 
 //Create data (Category)
+
 $('#submit-btn').click(function(){
-    
+        
     if($('#categoryName').val() == ""){
         $('#categoryName').css({"border-color": "red"})
         $('.invalid-feedback').addClass('d-block');
