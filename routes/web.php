@@ -26,6 +26,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
     //Category Routes
     Route::get('/category/response', 'CategoryController@getResponse')->name('category.response');
     Route::resource('/category', 'CategoryController');
+    
+    //News Routes
+    Route::get('/news/response', 'NewsController@getResponse')->name('news.response');
+    
+    Route::get('/news/trash/{id}', 'NewsController@trash');
+
+    Route::get('/news/trash/recover/{id}', 'NewsController@recoverTrash');
+
+    Route::get('/news/trash', 'NewsController@trashIndex')->name('news.trash.index');
+
+    Route::get('/news/response/trash', 'NewsController@trashResponse')->name('news.trash.response');
+
+    Route::resource('/news', 'NewsController');
 
 
 });

@@ -38,10 +38,23 @@
 					{{-- Category items --}}
 
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/category*')) ? 'pcoded-toggle' : '' }}">
-						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Page layouts</span></a>
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-list"></i></i></span><span class="pcoded-mtext">Category</span></a>
 						<ul class="pcoded-submenu">
 								<li><a href="{{ route('admin.category.index') }}" >Manage Category</a></li>
-								<li><a href="layout-horizontal.html" target="_blank">Horizontal</a></li>
+								
+						</ul>
+					</li>
+
+					{{-- News item --}}
+
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/news*')) ? 'pcoded-toggle' : '' }}">
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-newspaper"></i></span><span class="pcoded-mtext">News</span></a>
+						<ul class="pcoded-submenu">
+								<li><a href="{{ route('admin.news.create') }}" >Publish News</a></li>
+								<li><a href="{{ route('admin.news.index') }}" >Manage News</a></li>
+								<li><a href="{{ route('admin.news.index') }}" >Draft News</a></li>
+								<li><a href="{{ route('admin.news.trash.index') }}" >Trash bin</a></li>
+								
 						</ul>
 					</li>
 

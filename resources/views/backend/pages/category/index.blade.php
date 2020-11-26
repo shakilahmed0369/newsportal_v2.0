@@ -1,9 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
 @section('extraCss')
-    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-    
 @endsection
     
 <div class="card">
@@ -45,8 +43,7 @@
           
             <form class="form" method="POST">
                 <input  type="text" class="form-control" name="categoryName" id="categoryName" placeholder="Category Name" >
-                <div class="invalid-feedback d-none">Fild can't be empty!</div>
-                
+                <div class="invalid-feedback d-none">Field can't be empty!</div> 
             </form>
         </div>
         <div class="modal-footer">
@@ -105,20 +102,28 @@
   </div>
 </div>
 
+
 @section('extraJs')
+<!--Used (only on theis page)-->
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<!--Used (only on theis page)-->
 
 
 <script>
+/*******************
+ * AJAX CSRF TOKEN *
+ *******************/
    $(document).ready(function() {
-    $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     });
 
-//++++++++geting table data from databasae (yajra datatable)++++++//
+/******************************************************
+ * GETING TABLE DATA FROM DATABASAE (YAJRA DATATABLE) *
+ ******************************************************/
 
     $('#user-table').DataTable({
         processing: true,
@@ -134,13 +139,11 @@
         ]
     });
 } );
-
-//++++++++(End)geting table data from databasae (yajra datatable)++++++//
+//******************************************************//
 
 
 
 //Create data (Category)
-
 $('#submit-btn').click(function(){
         
     if($('#categoryName').val() == ""){
@@ -170,9 +173,7 @@ $('#submit-btn').click(function(){
                 }
             }
         });
-    }
-
-    
+    }  
 })
 
 

@@ -1,7 +1,12 @@
 <?php
+//uniq id generator
+function uId($min,$max){
+  $numbers = range($min, $max);
+  shuffle($numbers);
+  return $final = array_slice($numbers, 0, 200);
+}
+  
 //bangla number convener
-    
-
     function bnNum($number)
     {
       $bn = ["১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০", "ক"];
