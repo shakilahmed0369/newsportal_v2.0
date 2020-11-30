@@ -40,6 +40,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
 
     Route::resource('/news', 'NewsController');
 
+    //Gallery Routes
+    Route::get('/gallery/response', 'GalleryController@getResponse')->name('gallery.response');
+    Route::resource('/gallery', 'GalleryController');
+
+    //Gallery Routes
+    Route::get('/video/response', 'VideoController@getResponse')->name('video.response');
+    Route::resource('/video', 'VideoController');
+
 
 });
 

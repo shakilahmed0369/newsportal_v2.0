@@ -113,7 +113,7 @@ class NewsController extends Controller
         $store->on_featured = $request->featured;
         $store->on_breaking = $request->breaking;
         $store->views = 0;
-        $store->status = 0;
+        $store->status = 1;
         $store->save();
         toast('News Published successfully!', 'success');
         return redirect()->route('admin.news.index');
@@ -213,7 +213,7 @@ class NewsController extends Controller
         $update->on_featured = $request->featured;
         $update->on_breaking = $request->breaking;
         $update->views = 0;
-        $update->status = 0;
+        $update->status = 1;
         $update->save();
         toast('News Updated successfully!', 'success');
         return redirect()->route('admin.news.index');

@@ -8,10 +8,10 @@
 <div class="card">
 
   <div class="card-header">
-      <h5>Hello card</h5>
+      <h5>Trash bin</h5>
       <div class="card-header-right">
           <div class="btn-group card-option">
-              <a href="{{ route('admin.news.create') }}" class=" btn btn-primary mr-4">Publish News</a>
+              <a href="{{ route('admin.news.index') }}" class=" btn btn-primary mr-4">Manage News</a>
               <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="feather icon-more-horizontal"></i>
               </button>

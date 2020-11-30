@@ -52,9 +52,24 @@
 						<ul class="pcoded-submenu">
 								<li><a href="{{ route('admin.news.create') }}" >Publish News</a></li>
 								<li><a href="{{ route('admin.news.index') }}" >Manage News</a></li>
-								<li><a href="{{ route('admin.news.index') }}" >Draft News</a></li>
 								<li><a href="{{ route('admin.news.trash.index') }}" >Trash bin</a></li>
 								
+						</ul>
+					</li>
+
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/gallery*')) ? 'pcoded-toggle' : '' }}">
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-newspaper"></i></span><span class="pcoded-mtext">Gallery</span></a>
+						<ul class="pcoded-submenu">
+								<li><a href="{{ route('admin.gallery.create') }}" >Publish Photo</a></li>
+								<li><a href="{{ route('admin.gallery.index') }}" >Manage Photo</a></li>	
+						</ul>
+					</li>
+
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/vido*')) ? 'pcoded-toggle' : '' }}">
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-newspaper"></i></span><span class="pcoded-mtext">Video</span></a>
+						<ul class="pcoded-submenu">
+								<li><a href="{{ route('admin.video.create') }}" >Publish Video</a></li>
+								<li><a href="{{ route('admin.video.index') }}" >Manage Video</a></li>	
 						</ul>
 					</li>
 

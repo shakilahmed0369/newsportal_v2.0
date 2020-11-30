@@ -10,6 +10,7 @@
       <div class="card-header">
           <h5>Publish News</h5>
           <div class="card-header-right">
+            <a href="{{ route('admin.news.index') }}" class=" btn btn-primary mr-4">Manage News</a>
               <div class="btn-group card-option">
                   <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="feather icon-more-horizontal"></i>
@@ -89,7 +90,7 @@
                     </select>
                     @error('category')
                             <span class="text-danger">{{ $message }} </span>
-                        @enderror
+                    @enderror
                 </div>
 
                 <div class="custom-control custom-switch">
@@ -101,7 +102,6 @@
                     <input value="1" name="breaking" type="checkbox" class="custom-control-input" id="customswitch2">
                     <label class="custom-control-label" for="customswitch2">Show On Breaking News</label>
                 </div>
-
                 </div>   
             </div>
             <button type="submit" class="btn  btn-primary">Publish</button>
