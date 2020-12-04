@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDO;
 
-class RedirectIfAuthenticated
+class AdminRedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -20,9 +20,16 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        // $guards = empty($guards) ? [null] : $guards;
 
-        if(Auth::guard()->check()){
-            return redirect(RouteServiceProvider::HOME);
+        // foreach ($guards as $guard) {
+        //     if (Auth::guard($guard)->check()) {
+        //         return redirect(RouteServiceProvider::HOME);
+        //     }
+        // }
+
+        if(Auth::guard('admin')->check()){
+            return redirect(RouteServiceProvider::ADMIN);
         }
 
         return $next($request);
