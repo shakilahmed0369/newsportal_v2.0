@@ -14,6 +14,18 @@ use File;
 class NewsController extends Controller
 {
     /**
+     * constructor fun
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->middleware('permitTo:ReadNews')->only(['index', 'getResponse','trashIndex', 'trashResponse']);
+        $this->middleware('permitTo:CreateNews')->only(['store', 'create']);
+        $this->middleware('permitTo:UpdateNews')->only(['update', 'edit', 'recoverTrash']);
+        $this->middleware('permitTo:DeleteNews')->only(['destroy', 'trash']);
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -120,16 +132,6 @@ class NewsController extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

@@ -58,7 +58,7 @@
 					</li>
 
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/gallery*')) ? 'pcoded-toggle' : '' }}">
-						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-newspaper"></i></span><span class="pcoded-mtext">Gallery</span></a>
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-images"></i></span><span class="pcoded-mtext">Gallery</span></a>
 						<ul class="pcoded-submenu">
 								<li><a href="{{ route('admin.gallery.create') }}" >Publish Photo</a></li>
 								<li><a href="{{ route('admin.gallery.index') }}" >Manage Photo</a></li>	
@@ -66,10 +66,35 @@
 					</li>
 
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/vido*')) ? 'pcoded-toggle' : '' }}">
-						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-newspaper"></i></span><span class="pcoded-mtext">Video</span></a>
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Video</span></a>
 						<ul class="pcoded-submenu">
 								<li><a href="{{ route('admin.video.create') }}" >Publish Video</a></li>
 								<li><a href="{{ route('admin.video.index') }}" >Manage Video</a></li>	
+						</ul>
+					</li>
+
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/role')) ? 'pcoded-toggle' : '' }}">
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-user-shield"></i></span><span class="pcoded-mtext">Admin Managmet</span></a>
+						<ul class="pcoded-submenu">
+								
+								<li class="nav-item pcoded-hasmenu {{ (request()->is('')) ? 'pcoded-toggle' : '' }}">
+									<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-mtext">Role</span></a>
+									<ul class="pcoded-submenu">
+										<li><a href="{{ url('/admin/role/create') }}">Register Role</a></li>
+										<li><a href="{{ url('/admin/roles') }}" >Manage Role</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item pcoded-hasmenu {{ (request()->is('')) ? 'pcoded-toggle' : '' }}">
+									<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-mtext">Assign Role</span></a>
+									<ul class="pcoded-submenu">
+										<li><a href="{{ url('/admin/register') }}" >Register New Admin</a></li>
+										<li><a href="{{ url('/admin/show') }}" >Admin List</a></li>
+
+										
+									</ul>
+								</li>
+
 						</ul>
 					</li>
 

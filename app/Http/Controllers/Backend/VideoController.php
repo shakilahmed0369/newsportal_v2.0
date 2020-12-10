@@ -13,6 +13,18 @@ use File;
 class VideoController extends Controller
 {
     /**
+     * constructor fun
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->middleware('permitTo:ReadGallery')->only(['index', 'getResponse']);
+        $this->middleware('permitTo:CreateGallery')->only(['store', 'create']);
+        $this->middleware('permitTo:UpdateGallery')->only(['update', 'edit']);
+        $this->middleware('permitTo:DeleteGallery')->only(['destroy']);
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -79,17 +91,6 @@ class VideoController extends Controller
         $store->save();
         toast('Video added successfully!', 'success');
         return redirect()->route('admin.video.index'); 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

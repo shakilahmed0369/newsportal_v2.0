@@ -12,6 +12,18 @@ use File;
 class GalleryController extends Controller
 {
     /**
+     * constructor fun
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->middleware('permitTo:ReadGallery')->only(['index', 'getResponse']);
+        $this->middleware('permitTo:CreateGallery')->only(['store', 'create']);
+        $this->middleware('permitTo:UpdateGallery')->only(['update', 'edit']);
+        $this->middleware('permitTo:DeleteGallery')->only(['destroy']);
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

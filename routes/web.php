@@ -23,30 +23,30 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],function(){
+    //Dashboard route
+    Route::get('/dashboard', 'DashboardContoller@index');
+
     //Category Routes
     Route::get('/category/response', 'CategoryController@getResponse')->name('category.response');
     Route::resource('/category', 'CategoryController');
     
     //News Routes
     Route::get('/news/response', 'NewsController@getResponse')->name('news.response');
-    
     Route::get('/news/trash/{id}', 'NewsController@trash');
-
     Route::get('/news/trash/recover/{id}', 'NewsController@recoverTrash');
-
     Route::get('/news/trash', 'NewsController@trashIndex')->name('news.trash.index');
-
     Route::get('/news/response/trash', 'NewsController@trashResponse')->name('news.trash.response');
-
     Route::resource('/news', 'NewsController');
 
+    
     //Gallery Routes
     Route::get('/gallery/response', 'GalleryController@getResponse')->name('gallery.response');
     Route::resource('/gallery', 'GalleryController');
 
-    //Gallery Routes
+    //Video Routes
     Route::get('/video/response', 'VideoController@getResponse')->name('video.response');
     Route::resource('/video', 'VideoController');
+    
 
 
 });

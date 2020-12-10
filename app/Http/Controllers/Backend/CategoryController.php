@@ -11,6 +11,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 class CategoryController extends Controller
 {
     /**
+     * constructor fun
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->middleware('permitTo:CreateCategory')->only(['store']);
+        $this->middleware('permitTo:ReadCategory')->only(['index', 'getResponse', 'show']);
+        $this->middleware('permitTo:UpdateCategory')->only(['update', 'edit']);
+        $this->middleware('permitTo:DeleteCategory')->only(['destroy']);
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
