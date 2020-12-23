@@ -1,3 +1,7 @@
+@php
+		use Bitfumes\Multiauth\Model\Admin;
+		$admin = Admin::find(Auth::user('admin')->id);
+@endphp
 	<!-- [ navigation menu ] start -->
 	<nav class="pcoded-navbar  ">
 		<div class="navbar-wrapper  ">
@@ -7,15 +11,24 @@
 					<div class="main-menu-header" onclick="$('#nav-user-link').slideToggle(400)">
 						<img class="img-radius" src="{{ asset('backend/assets/images/user/avatar-2.jpg') }}" alt="User-Profile-Image">
 						<div class="user-details">
-							<span>John Doe</span>
-							<div id="more-details">UX Designer<i class="fa fa-chevron-down m-l-5"></i></div>
+							<span>{{ Auth('admin')->user()->name }}</span>
+							<div id="more-details">
+								@foreach ($admin->roles as $admin)
+								{{ $admin->name }}
+								@endforeach
+								<i class="fa fa-chevron-down m-l-5"></i></div>
 						</div>
 					</div>
 					<div class="collapse" id="nav-user-link">
 						<ul class="list-unstyled">
 							<li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>View Profile</a></li>
 							<li class="list-group-item"><a href="#!"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
-							<li class="list-group-item"><a href="auth-normal-sign-in.html"><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
+							<li class="list-group-item"><a href="" onclick="event.preventDefault();
+								document.getElementById('logout-form').submit();" ><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
+							<form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+              </form>
 						</ul>
 					</div>
 				</div>
@@ -25,8 +38,9 @@
 						<label>Navigation</label>
 					</li>
 					<li class="nav-item">
-					    <a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+					    <a href="{{ route('admin.dashboard') }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
 					</li>
+
 					<li class="nav-item pcoded-hasmenu">
 					    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Page layouts</span></a>
 					    <ul class="pcoded-submenu">
@@ -36,7 +50,7 @@
 					</li>
 
 					{{-- Category items --}}
-
+					@admin('admin')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/category*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-list"></i></i></span><span class="pcoded-mtext">Category</span></a>
 						<ul class="pcoded-submenu">
@@ -44,9 +58,10 @@
 								
 						</ul>
 					</li>
+					@endadmin
 
 					{{-- News item --}}
-
+					@admin('publisher')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/news*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-newspaper"></i></span><span class="pcoded-mtext">News</span></a>
 						<ul class="pcoded-submenu">
@@ -56,7 +71,10 @@
 								
 						</ul>
 					</li>
+					@endadmin
 
+					{{-- Gallery item --}}
+					@admin('publisher')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/gallery*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-images"></i></span><span class="pcoded-mtext">Gallery</span></a>
 						<ul class="pcoded-submenu">
@@ -64,7 +82,10 @@
 								<li><a href="{{ route('admin.gallery.index') }}" >Manage Photo</a></li>	
 						</ul>
 					</li>
+					@endadmin
 
+					{{-- Video item --}}
+					@admin('publisher')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/vido*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Video</span></a>
 						<ul class="pcoded-submenu">
@@ -72,7 +93,10 @@
 								<li><a href="{{ route('admin.video.index') }}" >Manage Video</a></li>	
 						</ul>
 					</li>
+					@endadmin
 
+					{{-- Admin item --}}
+					@admin('super') 
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/role')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-user-shield"></i></span><span class="pcoded-mtext">Admin Managmet</span></a>
 						<ul class="pcoded-submenu">
@@ -97,6 +121,7 @@
 
 						</ul>
 					</li>
+					@endadmin
 
 				</ul>
 

@@ -18,13 +18,10 @@ use Illuminate\Support\Facades\Route;
  * Backend routes
  */
 
-Route::get('/', function () {
-    return view('backend.pages.dashboard.dashboard');
-});
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],function(){
     //Dashboard route
-    Route::get('/dashboard', 'DashboardContoller@index');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
     //Category Routes
     Route::get('/category/response', 'CategoryController@getResponse')->name('category.response');
@@ -64,7 +61,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
     });
 
     //login redirect route
-    Route::get('/dashboard', 'DashboardController@dashboard');
+    //Route::get('/dashboard', 'DashboardController@dashboard');
 
 
 

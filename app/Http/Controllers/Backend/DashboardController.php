@@ -7,7 +7,12 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function dashboard()
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
+    public function index()
     {
         return view('backend.pages.dashboard.dashboard');
     }
