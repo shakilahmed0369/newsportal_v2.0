@@ -561,6 +561,7 @@ class ComposerStaticInitabeb02877629191d08f8cc3cbeaecc73
         'App\\Http\\Controllers\\Backend\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/DashboardController.php',
         'App\\Http\\Controllers\\Backend\\GalleryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/GalleryController.php',
         'App\\Http\\Controllers\\Backend\\NewsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/NewsController.php',
+        'App\\Http\\Controllers\\Backend\\SiteCustomizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/SiteCustomizationController.php',
         'App\\Http\\Controllers\\Backend\\VideoController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/VideoController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',

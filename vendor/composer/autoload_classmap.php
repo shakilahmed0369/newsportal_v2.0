@@ -22,6 +22,7 @@ return array(
     'App\\Http\\Controllers\\Backend\\DashboardController' => $baseDir . '/app/Http/Controllers/Backend/DashboardController.php',
     'App\\Http\\Controllers\\Backend\\GalleryController' => $baseDir . '/app/Http/Controllers/Backend/GalleryController.php',
     'App\\Http\\Controllers\\Backend\\NewsController' => $baseDir . '/app/Http/Controllers/Backend/NewsController.php',
+    'App\\Http\\Controllers\\Backend\\SiteCustomizationController' => $baseDir . '/app/Http/Controllers/Backend/SiteCustomizationController.php',
     'App\\Http\\Controllers\\Backend\\VideoController' => $baseDir . '/app/Http/Controllers/Backend/VideoController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',

@@ -54,8 +54,7 @@
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/category*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-list"></i></i></span><span class="pcoded-mtext">Category</span></a>
 						<ul class="pcoded-submenu">
-								<li><a href="{{ route('admin.category.index') }}" >Manage Category</a></li>
-								
+								<li><a href="{{ route('admin.category.index') }}" >Manage Category</a></li>	
 						</ul>
 					</li>
 					@endadmin
@@ -67,8 +66,7 @@
 						<ul class="pcoded-submenu">
 								<li><a href="{{ route('admin.news.create') }}" >Publish News</a></li>
 								<li><a href="{{ route('admin.news.index') }}" >Manage News</a></li>
-								<li><a href="{{ route('admin.news.trash.index') }}" >Trash bin</a></li>
-								
+								<li><a href="{{ route('admin.news.trash.index') }}" >Trash bin</a></li>	
 						</ul>
 					</li>
 					@endadmin
@@ -86,10 +84,21 @@
 
 					{{-- Video item --}}
 					@admin('publisher')
-					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/vido*')) ? 'pcoded-toggle' : '' }}">
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/video*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Video</span></a>
 						<ul class="pcoded-submenu">
 								<li><a href="{{ route('admin.video.create') }}" >Publish Video</a></li>
+								<li><a href="{{ route('admin.video.index') }}" >Manage Video</a></li>	
+						</ul>
+					</li>
+					@endadmin
+
+					{{-- customize item --}}
+					@admin('publisher')
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/customize*')) ? 'pcoded-toggle' : '' }}">
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Site Customization</span></a>
+						<ul class="pcoded-submenu">
+								<li><a href="{{ route('admin.navIndex') }}" >Customize Navbar</a></li>
 								<li><a href="{{ route('admin.video.index') }}" >Manage Video</a></li>	
 						</ul>
 					</li>
@@ -129,7 +138,17 @@
 			</div>
 		</div>
 	</nav>
-    <!-- [ navigation menu ] end -->
+		<!-- [ navigation menu ] end -->
+		
+
+
+
+
+
+
+
+
+		
 		
 		
 	<!-- [ Header ] start -->
