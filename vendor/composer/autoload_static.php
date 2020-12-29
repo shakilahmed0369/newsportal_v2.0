@@ -594,6 +594,8 @@ class ComposerStaticInitabeb02877629191d08f8cc3cbeaecc73
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Gallery' => __DIR__ . '/../..' . '/app/Models/Gallery.php',
+        'App\\Models\\HomeSection' => __DIR__ . '/../..' . '/app/Models/HomeSection.php',
+        'App\\Models\\HomeSectionElement' => __DIR__ . '/../..' . '/app/Models/HomeSectionElement.php',
         'App\\Models\\News' => __DIR__ . '/../..' . '/app/Models/News.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Video' => __DIR__ . '/../..' . '/app/Models/Video.php',

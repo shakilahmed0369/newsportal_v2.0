@@ -39,6 +39,8 @@ return array(
     'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Gallery' => $baseDir . '/app/Models/Gallery.php',
+    'App\\Models\\HomeSection' => $baseDir . '/app/Models/HomeSection.php',
+    'App\\Models\\HomeSectionElement' => $baseDir . '/app/Models/HomeSectionElement.php',
     'App\\Models\\News' => $baseDir . '/app/Models/News.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\Video' => $baseDir . '/app/Models/Video.php',

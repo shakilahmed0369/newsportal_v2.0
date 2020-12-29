@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\HomeSection;
 use Laravel\Ui\Presets\React;
 
 class SiteCustomizationController extends Controller
@@ -43,6 +44,24 @@ class SiteCustomizationController extends Controller
            $active->save();
       
        }
+    }
+
+
+
+    // HOME Page Customize
+    public function homeCustomize()
+    {
+        $sections = HomeSection::all();
+
+        return view('backend.pages.customize.home_customize', compact('sections'));
+    }
+
+    public function addSection()
+    {
+        $section = new HomeSection();
+        $section->status = 1;
+        $section->save();
+        return redirect()->back();
     }
 
 
