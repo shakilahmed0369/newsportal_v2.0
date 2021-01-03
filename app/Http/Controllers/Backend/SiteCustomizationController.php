@@ -51,18 +51,17 @@ class SiteCustomizationController extends Controller
     // HOME Page Customize
     public function homeCustomize()
     {
-        $sections = HomeSection::all();
-
-        return view('backend.pages.customize.home_customize', compact('sections'));
+        $categorys = Category::all();
+        return view('backend.pages.customize.home_customize', compact('categorys'));
     }
 
-    public function addSection()
-    {
-        $section = new HomeSection();
-        $section->status = 1;
-        $section->save();
-        return redirect()->back();
-    }
+    // public function addSection()
+    // {
+    //     $section = new HomeSection();
+    //     $section->status = 1;
+    //     $section->save();
+    //     return redirect()->back();
+    // }
 
 
 }
