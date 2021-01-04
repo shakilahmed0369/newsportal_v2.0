@@ -53,6 +53,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
     //home Customize Route
     Route::get('/homecutomize', 'SiteCustomizationController@homeCustomize')->name('homeCustomize');
     Route::get('/homecutomize/add-section', 'SiteCustomizationController@addSection')->name('addSection');
+    Route::post('/homecustomize/update', 'SiteCustomizationController@homeUpdate')->name('homeUpdate');
 });
 
 

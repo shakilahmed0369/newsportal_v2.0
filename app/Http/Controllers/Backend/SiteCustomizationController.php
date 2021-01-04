@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\HomeSection;
+use App\Models\HomeSectionElement;
+use Database\Seeders\HomeCustomizeSeeder;
 use Laravel\Ui\Presets\React;
 
 class SiteCustomizationController extends Controller
@@ -52,16 +54,29 @@ class SiteCustomizationController extends Controller
     public function homeCustomize()
     {
         $categorys = Category::all();
-        return view('backend.pages.customize.home_customize', compact('categorys'));
+        $homeCustomize = HomeSectionElement::all();
+        return view('backend.pages.customize.home_customize', compact('categorys', 'homeCustomize'));
     }
 
-    // public function addSection()
-    // {
-    //     $section = new HomeSection();
-    //     $section->status = 1;
-    //     $section->save();
-    //     return redirect()->back();
-    // }
+    public function homeUpdate(Request $request)
+    {
+        // return $request;
+        $positions = HomeSectionElement::all();
+        $d = [];
+        foreach($positions as $row){
+            $category = "categoryId-$row->id";
+            $categoryId = $request[$category];
+            $homeupdate = HomeSectionElement::find($row->id);
+            $homeupdate->position = $categoryId;
+            $homeupdate->save();
+            
+        }
+
+        return redirect()->back();
+        
+    }
+
+    
 
 
 }
