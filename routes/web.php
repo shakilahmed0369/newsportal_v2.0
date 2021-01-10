@@ -46,14 +46,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
 
     //siteCustomization Routes
     Route::get('/navcustiomize', 'SiteCustomizationController@showNavIndex')->name('navIndex');
-
     ///nav customize Route
     Route::post('/navcustiomize/active', 'SiteCustomizationController@activeNavSort')->name('activeNavSort');
     Route::post('/navcustiomize/enactive', 'SiteCustomizationController@enactiveNavSort')->name('enactiveNavSort');
     //home Customize Route
     Route::get('/homecutomize', 'SiteCustomizationController@homeCustomize')->name('homeCustomize');
-    Route::get('/homecutomize/add-section', 'SiteCustomizationController@addSection')->name('addSection');
     Route::post('/homecustomize/update', 'SiteCustomizationController@homeUpdate')->name('homeUpdate');
+
+    //Advertisement routes
+    Route::get('/ad/getresponse', 'AdController@getResponse')->name('ad.response');
+    Route::resource('/ad', 'AdController');
+    
 });
 
 

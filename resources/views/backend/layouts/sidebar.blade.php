@@ -104,6 +104,30 @@
 					</li>
 					@endadmin
 
+
+
+					{{-- customize item --}}
+					@admin('publisher')
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/customize*')) ? 'pcoded-toggle' : '' }}">
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Advertisement</span></a>
+						<ul class="pcoded-submenu">
+								<li><a href="{{ route('admin.navIndex') }}" >Placement</a></li>
+								<li><a href="{{ route('admin.ad.index') }}" >Ad Unit</a></li>	
+						</ul>
+					</li>
+					@endadmin
+
+					{{-- customize item --}}
+					@admin('publisher')
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/customize*')) ? 'pcoded-toggle' : '' }}">
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Settings</span></a>
+						<ul class="pcoded-submenu">
+								<li><a href="{{ route('admin.navIndex') }}" >Web Information</a></li>
+								<li><a href="{{ route('admin.ad.index') }}" >Ad Unit</a></li>	
+						</ul>
+					</li>
+					@endadmin
+
 					{{-- Admin item --}}
 					@admin('super') 
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/role')) ? 'pcoded-toggle' : '' }}">
@@ -123,11 +147,10 @@
 									<ul class="pcoded-submenu">
 										<li><a href="{{ url('/admin/register') }}" >Register New Admin</a></li>
 										<li><a href="{{ url('/admin/show') }}" >Admin List</a></li>
-
-										
 									</ul>
 								</li>
 
+								
 						</ul>
 					</li>
 					@endadmin
