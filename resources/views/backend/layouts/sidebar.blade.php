@@ -22,7 +22,7 @@
 					<div class="collapse" id="nav-user-link">
 						<ul class="list-unstyled">
 							<li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>View Profile</a></li>
-							<li class="list-group-item"><a href="#!"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
+							<li class="list-group-item"><a href="{{ route('admin.password.change') }}"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
 							<li class="list-group-item"><a href="" onclick="event.preventDefault();
 								document.getElementById('logout-form').submit();" ><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
 							<form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
@@ -93,10 +93,21 @@
 					</li>
 					@endadmin
 
+					{{-- Add pag item --}}
+					@admin('publisher')
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/video*')) ? 'pcoded-toggle' : '' }}">
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Pages</span></a>
+						<ul class="pcoded-submenu">
+								<li><a href="{{ route('admin.video.create') }}" >Add Page</a></li>
+								<li><a href="{{ route('admin.video.index') }}" >Manage Page</a></li>	
+						</ul>
+					</li>
+					@endadmin
+
 					{{-- customize item --}}
 					@admin('publisher')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/customize*')) ? 'pcoded-toggle' : '' }}">
-						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Site Customization</span></a>
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-th-large"></i></span><span class="pcoded-mtext">Site Customization</span></a>
 						<ul class="pcoded-submenu">
 								<li><a href="{{ route('admin.navIndex') }}" >Customize Navbar</a></li>
 								<li><a href="{{ route('admin.homeCustomize') }}" >Manage Video</a></li>	
@@ -109,9 +120,8 @@
 					{{-- customize item --}}
 					@admin('publisher')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/customize*')) ? 'pcoded-toggle' : '' }}">
-						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Advertisement</span></a>
+						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-ad"></i></span><span class="pcoded-mtext">Advertisement</span></a>
 						<ul class="pcoded-submenu">
-								<li><a href="{{ route('admin.navIndex') }}" >Placement</a></li>
 								<li><a href="{{ route('admin.ad.index') }}" >Ad Unit</a></li>	
 						</ul>
 					</li>
@@ -119,12 +129,8 @@
 
 					{{-- customize item --}}
 					@admin('publisher')
-					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/customize*')) ? 'pcoded-toggle' : '' }}">
-						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Settings</span></a>
-						<ul class="pcoded-submenu">
-								<li><a href="{{ route('admin.navIndex') }}" >Web Information</a></li>
-								<li><a href="{{ route('admin.ad.index') }}" >Ad Unit</a></li>	
-						</ul>
+					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/settings*')) ? 'pcoded-toggle' : '' }}">
+						<a href="{{ route('admin.settings.index') }}" class="nav-link "><span class="pcoded-micon"><i class="fas fa-cog"></i></span><span class="pcoded-mtext">Settings</span></a>
 					</li>
 					@endadmin
 
@@ -149,15 +155,12 @@
 										<li><a href="{{ url('/admin/show') }}" >Admin List</a></li>
 									</ul>
 								</li>
-
-								
+	
 						</ul>
 					</li>
 					@endadmin
 
-				</ul>
-
-				
+				</ul>	
 			</div>
 		</div>
 	</nav>

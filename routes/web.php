@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
     ///nav customize Route
     Route::post('/navcustiomize/active', 'SiteCustomizationController@activeNavSort')->name('activeNavSort');
     Route::post('/navcustiomize/enactive', 'SiteCustomizationController@enactiveNavSort')->name('enactiveNavSort');
+
     //home Customize Route
     Route::get('/homecutomize', 'SiteCustomizationController@homeCustomize')->name('homeCustomize');
     Route::post('/homecustomize/update', 'SiteCustomizationController@homeUpdate')->name('homeUpdate');
@@ -56,6 +57,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
     //Advertisement routes
     Route::get('/ad/getresponse', 'AdController@getResponse')->name('ad.response');
     Route::resource('/ad', 'AdController');
+
+    //Settings Routes
+    Route::get('/settings', 'SettingsController@index')->name('settings.index');
+    //Webinfo Rute
+    Route::post('/settings/webinfoupdate', 'SettingsController@WebinfoUpdate')->name('settings.webinfoupdate');
+    //Webinfo Rute
+    Route::post('/settings/contactinfo', 'SettingsController@ContactInfoUpdate')->name('settings.contactInfoUpdate');
+    Route::post('/settings/imageupdate', 'SettingsController@ImageUpdate')->name('settings.imageUpdate');
     
 });
 
