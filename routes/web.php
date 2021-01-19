@@ -44,6 +44,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
     Route::get('/video/response', 'VideoController@getResponse')->name('video.response');
     Route::resource('/video', 'VideoController');
 
+    //Pages Route
+    Route::get('/page/getresponse', 'PageController@getResponse')->name('page.response');
+    Route::resource('/page', 'PageController');
+
     //siteCustomization Routes
     Route::get('/navcustiomize', 'SiteCustomizationController@showNavIndex')->name('navIndex');
     ///nav customize Route
@@ -65,6 +69,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
     //Webinfo Rute
     Route::post('/settings/contactinfo', 'SettingsController@ContactInfoUpdate')->name('settings.contactInfoUpdate');
     Route::post('/settings/imageupdate', 'SettingsController@ImageUpdate')->name('settings.imageUpdate');
+
     
 });
 
