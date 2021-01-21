@@ -14,6 +14,8 @@ class AdController extends Controller
     public function __construct()
     {
         $this->middleware('auth::admin');
+        $this->middleware('permitTo:ReadAd')->only(['index', 'getResponse']);
+        $this->middleware('permitTo:UpdateAd')->only(['update', 'edit']);
     }
     /**
      * Display a listing of the resource.
@@ -113,7 +115,7 @@ class AdController extends Controller
         $adUpdate->adurl = $request->adurl;
         $adUpdate->adscript = $request->adscript;
         $adUpdate->save();
-        toast('gallery Updated Successfully!', 'success');
+        toast('Ad Updated Successfully!', 'success');
         return redirect(route('admin.ad.index'));
     }
 
@@ -125,6 +127,6 @@ class AdController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
     }
 }

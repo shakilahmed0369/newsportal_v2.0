@@ -32,7 +32,9 @@
               <th>Sl</th>
               <th>Image</th>
               <th>title</th>
+              @permitTo('UpdateNews,DeleteNews')
               <th>Acton</th>
+              @endpermitTo
           </tr>
       </thead>
       <tbody>
@@ -70,7 +72,9 @@
             { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
             {data: 'image', name: 'image'},
             {data: 'title', name: 'title'},
+            @permitTo('UpdateNews,DeleteNews')
             {data: 'action', name: 'action'},
+            @endpermitTo
         ],
         columnDefs: [ {
         targets: 3,

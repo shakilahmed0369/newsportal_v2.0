@@ -18,7 +18,7 @@ class RoleController extends Controller
 
     public function index()
     {
-        $roles = $this->roleModel::all();
+        $roles = $this->roleModel::orderBy('id', 'DESC')->get();
         return view('multiauth::roles.index', compact('roles'));
     }
 

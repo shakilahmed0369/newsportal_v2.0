@@ -39,9 +39,9 @@ class CategoryController extends Controller
         return Datatables::of($category)
         ->addIndexColumn()
         ->addColumn('action', function($category){
-            return '<a href="" onclick="event.preventDefault()" class="btn btn-primary btn-edit" data-id="'.$category->id.'">Edit</a>
-            <a href="" onclick="event.preventDefault()" class="btn-delete btn btn-danger" data-id="'.$category->id.'">Delete</a>
-            ';
+               return '<a href="" onclick="event.preventDefault()" class="btn btn-primary btn-edit" data-id="'.$category->id.'">Edit</a>
+                <a href="" onclick="event.preventDefault()" class="btn-delete btn btn-danger" data-id="'.$category->id.'">Delete</a>
+                '; 
         })
         ->make(true);
     }

@@ -15,6 +15,7 @@ class SettingsController extends Controller
     function __construct()
     {
         $this->middleware('auth:admin');
+        $this->middleware('permitTo:EditSettings');
     }
     function index()
     {

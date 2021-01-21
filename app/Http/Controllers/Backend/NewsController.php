@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Category;
 use App\Models\News;
+use Bitfumes\Multiauth\Model\Permission;
+use Bitfumes\Multiauth\Model\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
 use Yajra\Datatables\Datatables;
 use File;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -32,6 +36,7 @@ class NewsController extends Controller
      */
     public function index()
     {
+        
         return view('backend.pages.news.index');
     }
 
@@ -47,9 +52,11 @@ class NewsController extends Controller
         })
         ->addColumn('action', function($news){
             $route = route('admin.news.edit', $news->id);
-            return '<a href="'.$route.'" class="btn btn-primary btn-edit">Edit</a>
-            <a href="" onclick="event.preventDefault()" class="btn-delete btn btn-danger" data-id="'.$news->id.'">Delete</a>
-            ';
+            $role = Auth('admin')->user()->roles->first();
+            if($news->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){
+                return '<a href="'.$route.'" class="btn btn-primary btn-edit">Edit</a>
+                    <a href="" onclick="event.preventDefault()" class="btn-delete btn btn-danger" data-id="'.$news->id.'">Delete</a>'; 
+            }     
         })->rawColumns(['image','action'])
         ->make(true);
     }
@@ -120,7 +127,7 @@ class NewsController extends Controller
         $store->image = $newImageName;
         $store->meta_tags = $request->tags;
         $store->meta_description = $request->meta_description;
-        $store->author_id = 0;
+        $store->author_id = Auth('admin')->user()->id;
         $store->category_id = $request->category;
         $store->on_featured = $request->featured;
         $store->on_breaking = $request->breaking;

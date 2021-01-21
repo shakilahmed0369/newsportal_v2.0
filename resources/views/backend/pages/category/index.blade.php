@@ -9,9 +9,11 @@
   <div class="card-header">
       <h5>Hello card</h5>
       <div class="card-header-right">
+          @permitTo('CreateCategory')
           <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModal">
             Add Category
           </button>
+          @endpermitTo
           <div class="btn-group card-option">
               <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="feather icon-more-horizontal"></i>
@@ -93,7 +95,9 @@
                 <th>Sl</th>
                 <th>category Name</th>
                 <th>category Slug</th>
+                @permitTo('UpdateCategory, DeleteCategory')
                 <th>Acton</th>
+                @endpermitTo
             </tr>
         </thead>
         <tbody>
@@ -135,7 +139,9 @@
             { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
             {data: 'categoryName', name: 'categoryName'},
             {data:'categorySlug', name: 'categorySlug'},
-            {data: 'action', name: 'action'},
+            @permitTo('UpdateCategory, DeleteCategory')
+            {data: 'action', name: 'action'}
+            @endpermitTo
         ]
     });
 } );

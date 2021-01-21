@@ -9,9 +9,7 @@
   <div class="card-header">
       <h5>Hello card</h5>
       <div class="card-header-right">
-          <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModal">
-            Add Category
-          </button>
+          <a href="{{ route('admin.page.create') }}" class="btn btn-primary mr-3">Add Page</a>
           <div class="btn-group card-option">
               <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="feather icon-more-horizontal"></i>
@@ -23,67 +21,7 @@
                   <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
               </ul>
           </div>
-      </div>
-
-      {{-- modal --}}
-
-      <!-- Button trigger modal -->
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="">Add Category</h5>
-          <button onclick="$('#categoryName').css({'border-color': ''}) + $('.invalid-feedback').removeClass('d-block')" type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          
-            <form class="form" method="POST">
-                <input  type="text" class="form-control" name="categoryName" id="categoryName" placeholder="Category Name" >
-                <div class="invalid-feedback d-none">Field can't be empty!</div> 
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" id="submit-btn" class="btn btn-primary">
-            Save
-        </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-   <!-- Edit Modal -->
-   <div class="modal fade"  id="edit-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="">Edit Category</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          
-            <form class="form" method="POST">
-                <input  type="text" class="form-control" name="editCategory" id="editCategory" placeholder="Category Name" required="">
-                <div class="invalid-feedback d-none">Fild can't be empty!</div>
-                
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" id="saveEditBtn" class="btn btn-primary">
-            Save
-        </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+      </div> 
   </div>
   <div class="card-body">
     <table id="user-table" class="display dataTable table table-striped table-bordered" style="width:100%">
@@ -166,20 +104,12 @@ $('body').on('click', '.btn-delete', function(){
                 .then((result)=>{
                     location.reload()
                 })
-            }
-
-            
+            }  
         });
-
-        
-
-    }
-    })
+      }
+  })
 
 })
-
-
-
 </script>
 
 

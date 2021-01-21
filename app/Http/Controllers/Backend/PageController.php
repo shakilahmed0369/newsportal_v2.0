@@ -12,6 +12,10 @@ class PageController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->middleware('permitTo:ReadPage')->only(['index', 'getResponse']);
+        $this->middleware('permitTo:CreatePage')->only(['store', 'create']);
+        $this->middleware('permitTo:UpdatePage')->only(['update', 'edit']);
+        $this->middleware('permitTo:DeletePage')->only(['destroy']);
     }
     /**
      * Display a listing of the resource.
