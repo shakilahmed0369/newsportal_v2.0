@@ -52,6 +52,7 @@ class NewsController extends Controller
         })
         ->addColumn('action', function($news){
             $route = route('admin.news.edit', $news->id);
+            //atuhentication
             $role = Auth('admin')->user()->roles->first();
             if($news->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){
                 return '<a href="'.$route.'" class="btn btn-primary btn-edit">Edit</a>
@@ -119,7 +120,6 @@ class NewsController extends Controller
         }
 
         //saving to database
-
         $store = new News();
         $store->title = $request->title;
         $store->slug = $slug;

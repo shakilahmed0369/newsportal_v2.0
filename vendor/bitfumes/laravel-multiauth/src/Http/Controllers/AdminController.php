@@ -2,6 +2,7 @@
 
 namespace Bitfumes\Multiauth\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -36,17 +37,31 @@ class AdminController extends Controller
 
     public function showChangePasswordForm()
     {
-        return view('multiauth::admin.passwords.change');
+        $user = Admin::find(Auth('admin')->user()->id);
+        return view('multiauth::admin.passwords.change', compact('user'));
     }
 
     public function changePassword(Request $request)
     {
+
+        if(!empty($request->oldPassword)){
         $data = $request->validate([
             'oldPassword'   => 'required',
             'password'      => 'required|confirmed',
         ]);
         auth()->user()->update(['password' => bcrypt($data['password'])]);
+        }
 
-        return redirect(route('admin.home'))->with('message', 'Your password is changed successfully');
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+
+        $update = Admin::find(Auth('admin')->user()->id);
+        $update->name = $request->name;
+        $update->email = $request->email;
+        $update->save();
+        toast('Profile updated successfully', 'success');
+        return redirect(route('admin.dashboard'));
     }
 }
