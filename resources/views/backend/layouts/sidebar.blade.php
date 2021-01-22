@@ -72,40 +72,52 @@
 					@endpermitTo
 
 					{{-- Gallery item --}}
-					@admin('publisher')
+					@permitToParent('Gallery')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/gallery*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-images"></i></span><span class="pcoded-mtext">Gallery</span></a>
 						<ul class="pcoded-submenu">
+							@permitTo('CreateGallery')
 								<li><a href="{{ route('admin.gallery.create') }}" >Publish Photo</a></li>
+							@endpermitTo
+							@permitTo('ReadGallery')
 								<li><a href="{{ route('admin.gallery.index') }}" >Manage Photo</a></li>	
+							@endpermitTo
 						</ul>
 					</li>
-					@endadmin
+					@endpermitTo
 
 					{{-- Video item --}}
-					@admin('publisher')
+					@permitToParent('Video')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/video*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-video"></i></span><span class="pcoded-mtext">Video</span></a>
 						<ul class="pcoded-submenu">
+							@permitTo('CreateVideo')
 								<li><a href="{{ route('admin.video.create') }}" >Publish Video</a></li>
-								<li><a href="{{ route('admin.video.index') }}" >Manage Video</a></li>	
+								@endpermitTo
+								@permitTo('ReadVideo')
+								<li><a href="{{ route('admin.video.index') }}" >Manage Video</a></li>
+								@endpermitTo	
 						</ul>
 					</li>
-					@endadmin
+					@endpermitTo
 
 					{{-- Add pag item --}}
-					@admin('publisher')
+					@permitToParent('Page')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/video*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="far fa-file-alt"></i></span><span class="pcoded-mtext">Pages</span></a>
 						<ul class="pcoded-submenu">
+							@permitTo('CreatePage')
 								<li><a href="{{ route('admin.page.create') }}" >Add Page</a></li>
+							@endpermitTo
+							@permitTo('ReadPage')
 								<li><a href="{{ route('admin.page.index') }}" >Manage Page</a></li>	
+							@endpermitTo
 						</ul>
 					</li>
-					@endadmin
+					@endpermitTo
 
 					{{-- customize item --}}
-					@admin('publisher')
+					@permitTo('ReadSiteCustomize')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/customize*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-th-large"></i></span><span class="pcoded-mtext">Site Customization</span></a>
 						<ul class="pcoded-submenu">
@@ -113,12 +125,12 @@
 								<li><a href="{{ route('admin.homeCustomize') }}" >Manage Video</a></li>	
 						</ul>
 					</li>
-					@endadmin
+					@endpermitTo
 
 
 
 					{{-- customize item --}}
-					@admin('publisher')
+					@admin('admin')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/customize*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-ad"></i></span><span class="pcoded-mtext">Advertisement</span></a>
 						<ul class="pcoded-submenu">
@@ -128,7 +140,7 @@
 					@endadmin
 
 					{{-- customize item --}}
-					@admin('publisher')
+					@admin('admin')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/settings*')) ? 'pcoded-toggle' : '' }}">
 						<a href="{{ route('admin.settings.index') }}" class="nav-link "><span class="pcoded-micon"><i class="fas fa-cog"></i></span><span class="pcoded-mtext">Settings</span></a>
 					</li>

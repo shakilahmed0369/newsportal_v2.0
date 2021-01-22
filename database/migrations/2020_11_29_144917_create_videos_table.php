@@ -18,7 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('video_link');
             $table->string('caption');
             $table->string('slug');
-            $table->integer('user_id');
+            $table->integer('auther_id');
             $table->timestamps();
         });
     }

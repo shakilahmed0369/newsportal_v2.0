@@ -43,10 +43,15 @@ class GalleryController extends Controller
             $url = asset("storage/photos/$gallery->photo");
             return '<img src='.$url.' border="0" width="100" class="img-fluid" align="center" />';
         })->addColumn('action', function($gallery){
+
             $route = route('admin.gallery.edit', $gallery->id);
+            //authentication
+            $role = Auth('admin')->user()->roles->first();
+            if($gallery->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){
             return '<a href="'.$route.'" class="btn btn-primary btn-edit" data-id="'.$gallery->id.'">Edit</a>
             <a href="" onclick="event.preventDefault()" class="btn-delete btn btn-danger" data-id="'.$gallery->id.'">Delete</a>
             ';
+            }
         })->rawColumns(['action', 'photo'])
         ->make(true);
     }
@@ -96,6 +101,7 @@ class GalleryController extends Controller
         $store = new Gallery();
         $store->photo = $newImageName;
         $store->caption = $request->caption;
+        $store->autehr_id = Auth('admin')->user()->id;
         $store->save();
         toast('Image added to gallery successfully!', 'success');
         return redirect()->route('admin.gallery.index');   
@@ -134,6 +140,9 @@ class GalleryController extends Controller
     public function update(Request $request, $id)
     {
         $update = Gallery::find($id);
+        //authentication
+        $role = Auth('admin')->user()->roles->first();
+        if($update->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){
 
         //validation
         $request->validate([
@@ -171,6 +180,9 @@ class GalleryController extends Controller
         $update->save();
         toast('gallery Updated Successfully!', 'success');
         return redirect()->route('admin.gallery.index'); 
+        }else{
+            return abort(404);
+        }
     }
 
     /**
@@ -182,9 +194,13 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         $delete = Gallery::find($id);
+        //authentication
+        $role = Auth('admin')->user()->roles->first();
+        if($delete->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){ 
         //deleting image from dir
         File::delete(public_path('storage/photos/'.$delete->photo));
         $delete->delete();
         toast('Item Deleted Successfully!', 'success');
+        }
     }
 }

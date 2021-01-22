@@ -163,6 +163,9 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
         $update = News::find($id);
+        //authentication
+        $role = Auth('admin')->user()->roles->first();
+            if($update->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){
 
         //field validation
         $request->validate([
@@ -227,6 +230,7 @@ class NewsController extends Controller
         toast('News Updated successfully!', 'success');
         return redirect()->route('admin.news.index');
     }
+    }
 
     public function trashIndex()
     {
@@ -278,7 +282,11 @@ class NewsController extends Controller
     public function destroy($id)
     {
         $delete = News::find($id);
+        //authentication
+        $role = Auth('admin')->user()->roles->first();
+        if($delete->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){
         $delete->delete();
         toast('News Deleted successfully!', 'success');
+        }
     }
 }

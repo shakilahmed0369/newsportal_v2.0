@@ -43,9 +43,13 @@ class VideoController extends Controller
             return '<span class=" text-center f-40"><i class="fab fa-youtube text-center"></i></span>';
         })->addColumn('action', function($video){
             $route = route('admin.video.edit', $video->id);
+            //authentication
+            $role = Auth('admin')->user()->roles->first();
+            if($video->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){ 
             return '<a href="'.$route.'" class="btn btn-primary btn-edit">Edit</a>
             <a href="" onclick="event.preventDefault()" class="btn-delete btn btn-danger" data-id="'.$video->id.'">Delete</a>
             ';
+            }
         })->rawColumns(['action', 'video'])
         ->make(true);
     }
@@ -87,7 +91,7 @@ class VideoController extends Controller
         $store->video_link = $request->url;
         $store->caption = $request->caption;
         $store->slug = $slug;
-        $store->user_id = 0;
+        $store->auther_id = Auth('admin')->user()->id;
         $store->save();
         toast('Video added successfully!', 'success');
         return redirect()->route('admin.video.index'); 
@@ -115,6 +119,9 @@ class VideoController extends Controller
     public function update(Request $request, $id)
     {
         $update = Video::find($id);
+        $role = Auth('admin')->user()->roles->first();
+        if($update->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){ 
+        
         //validation
         $request->validate([
             'url' => 'required|url',
@@ -139,7 +146,7 @@ class VideoController extends Controller
         toast('Video updated successfully!', 'success');
         return redirect()->route('admin.video.index'); 
       
-     
+     }
     }
 
     /**
@@ -151,7 +158,13 @@ class VideoController extends Controller
     public function destroy($id)
     {
         $delete = Video::find($id);
+        //authentication
+        $role = Auth('admin')->user()->roles->first();
+        if($delete->auther_id == Auth('admin')->user()->id || $role->name == 'super' || $role->name == 'admin' || $role->name == 'publisher'){  
         $delete->delete();
         toast('Item Deleted Successfully!', 'success');
+        }else{
+            abort(404);
+        }
     }
 }
