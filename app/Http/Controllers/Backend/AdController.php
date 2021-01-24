@@ -96,7 +96,7 @@ class AdController extends Controller
     {
         $adUpdate = Ad::find($id);
         if($request->hasFile('adimage')){
-        File::delete(public_path('storage/ad/'.$adUpdate->adimage));
+        File:: delete(public_path('storage/ad/'.$adUpdate->adimage));
         $image = $request->file('adimage');
           // Garbing the original image name
           $imageName = $image->getClientOriginalName();
@@ -109,10 +109,10 @@ class AdController extends Controller
         $adUpdate->adimage = $newImageName;
         }
 
-        $adUpdate->adname = $request->adname;
-        $adUpdate->adsize = $request->adsize;
-        $adUpdate->adtype = $request->adtype;
-        $adUpdate->adurl = $request->adurl;
+        $adUpdate->adname   = $request->adname;
+        $adUpdate->adsize   = $request->adsize;
+        $adUpdate->adtype   = $request->adtype;
+        $adUpdate->adurl    = $request->adurl;
         $adUpdate->adscript = $request->adscript;
         $adUpdate->save();
         toast('Ad Updated Successfully!', 'success');

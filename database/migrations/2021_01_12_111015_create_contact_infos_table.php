@@ -21,6 +21,9 @@ class CreateContactInfosTable extends Migration
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('full_adds')->nullable();
+            $table->string('fb')->nullable();
+            $table->string('tw')->nullable();
+            $table->string('yt')->nullable();
             $table->timestamps();
         });
     }
