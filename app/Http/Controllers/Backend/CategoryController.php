@@ -91,6 +91,7 @@ class CategoryController extends Controller
     {
         $update = Category::find($id);
         $update->categoryName = $request->categoryName;
+        $update->categorySlug = makeSlug($request->categoryName);
         $update->save();
         toast('Category Updated Successfully','success')->position('top-end')->autoClose(2000);
         

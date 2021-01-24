@@ -44,7 +44,7 @@ class NewsController extends Controller
     {
         $news = News::select('id', 'image' , 'title')->where('status', 1);
         
-        return Datatables::of($news)
+        return Datatables:: of($news)
         ->addIndexColumn()
         ->addColumn('image', function($news){
             $url = asset("storage/uploads/$news->image");
@@ -84,12 +84,12 @@ class NewsController extends Controller
         // return $request;
         //field validation
         $request->validate([
-            'title' => 'required|max:260',
-            'body' => 'required',
-            'tags' => 'required|max:260',
+            'title'            => 'required|max:260',
+            'body'             => 'required',
+            'tags'             => 'required|max:260',
             'meta_description' => 'required',
-            'photo' => 'required|image|max:3000',
-            'category' => 'required',
+            'photo'            => 'required|image|max:3000',
+            'category'         => 'required',
         ]);
 
 
@@ -120,19 +120,19 @@ class NewsController extends Controller
         }
 
         //saving to database
-        $store = new News();
-        $store->title = $request->title;
-        $store->slug = $slug;
-        $store->body = $request->body;
-        $store->image = $newImageName;
-        $store->meta_tags = $request->tags;
+        $store                   = new News();
+        $store->title            = $request->title;
+        $store->slug             = $slug;
+        $store->body             = $request->body;
+        $store->image            = $newImageName;
+        $store->meta_tags        = $request->tags;
         $store->meta_description = $request->meta_description;
-        $store->author_id = Auth('admin')->user()->id;
-        $store->category_id = $request->category;
-        $store->on_featured = $request->featured;
-        $store->on_breaking = $request->breaking;
-        $store->views = 0;
-        $store->status = 1;
+        $store->author_id        = Auth('admin')->user()->id;
+        $store->category_id      = $request->category;
+        $store->on_featured      = $request->featured;
+        $store->on_breaking      = $request->breaking;
+        $store->views            = 0;
+        $store->status           = 1;
         $store->save();
         toast('News Published successfully!', 'success');
         return redirect()->route('admin.news.index');
@@ -148,7 +148,7 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        $news = News::find($id);
+        $news       = News::find($id);
         $categories = Category::all();
         return view('backend.pages.news.edit', compact('news', 'categories'));
     }
@@ -169,11 +169,11 @@ class NewsController extends Controller
 
         //field validation
         $request->validate([
-            'title' => 'required|max:260',
-            'body' => 'required',
-            'tags' => 'required|max:260',
+            'title'            => 'required|max:260',
+            'body'             => 'required',
+            'tags'             => 'required|max:260',
             'meta_description' => 'required',
-            'category' => 'required',
+            'category'         => 'required',
         ]);
 
 
@@ -206,26 +206,25 @@ class NewsController extends Controller
             // saving image
             $imageResize->save(public_path('storage/uploads/'.$newImageName), 80);
             //deleting old image
-            File::delete(public_path('storage/uploads/'.$update->image));
+            File:: delete(public_path('storage/uploads/'.$update->image));
         }
 
         //saving to database
 
-        
         $update->title = $request->title;
-        $update->slug = $slug;
-        $update->body = $request->body;
+        $update->slug  = $slug;
+        $update->body  = $request->body;
         if($request->hasFile('photo')){
             $update->image = $newImageName;
         }
-        $update->meta_tags = $request->tags;
+        $update->meta_tags        = $request->tags;
         $update->meta_description = $request->meta_description;
-        $update->author_id = 0;
-        $update->category_id = $request->category;
-        $update->on_featured = $request->featured;
-        $update->on_breaking = $request->breaking;
-        $update->views = 0;
-        $update->status = 1;
+        $update->author_id        = 0;
+        $update->category_id      = $request->category;
+        $update->on_featured      = $request->featured;
+        $update->on_breaking      = $request->breaking;
+        $update->views            = 0;
+        $update->status           = 1;
         $update->save();
         toast('News Updated successfully!', 'success');
         return redirect()->route('admin.news.index');
@@ -242,7 +241,7 @@ class NewsController extends Controller
         
         $news = News::select('id', 'image' , 'title')->where('status', 2);
         
-        return Datatables::of($news)
+        return Datatables:: of($news)
         ->addIndexColumn()
         ->addColumn('image', function($news){
             $url = asset("storage/uploads/$news->image");
@@ -251,7 +250,7 @@ class NewsController extends Controller
         ->addColumn('action', function($news){
             
             return '<a href="" data-id="'.$news->id.'" onclick="event.preventDefault()" class="btn btn-primary btn-restore">Restore</a>
-            <a href="" onclick="event.preventDefault()" class="btn-delete btn btn-danger" data-id="'.$news->id.'">Delete</a>
+            <a href = "" onclick = "event.preventDefault()" class = "btn-delete btn btn-danger" data-id = "'.$news->id.'">Delete</a>
             ';
         })->rawColumns(['image','action'])
         ->make(true);
@@ -260,7 +259,7 @@ class NewsController extends Controller
 
     public function recoverTrash($id)
     {
-        $recover = News::find($id);
+        $recover         = News::find($id);
         $recover->status = 1;
         $recover->save();
     }
@@ -268,7 +267,7 @@ class NewsController extends Controller
 
     public function trash($id)
     {
-        $trash = News::find($id);
+        $trash         = News::find($id);
         $trash->status = 2;
         $trash->save();
     }
