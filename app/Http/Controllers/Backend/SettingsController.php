@@ -19,8 +19,8 @@ class SettingsController extends Controller
     }
     function index()
     {
-        $webInfo = Webinfo::first();
-        $contactInfo = ContactInfo::first();
+        $webInfo       = Webinfo::first();
+        $contactInfo   = ContactInfo::first();
         $webProperties = Webproperties::first();
         return view('backend.pages.settings.settings', compact('webInfo', 'contactInfo', 'webProperties'));
     }
@@ -28,13 +28,13 @@ class SettingsController extends Controller
     public function WebinfoUpdate(Request $request)
     {
         //return $request;
-        $update = Webinfo::first();
-        $update->c_name = $request->c_name;
-        $update->web_name = $request->web_name;
-        $update->web_url = $request->web_url;
+        $update                   = Webinfo::first();
+        $update->c_name           = $request->c_name;
+        $update->web_name         = $request->web_name;
+        $update->web_url          = $request->web_url;
         $update->site_description = $request->site_description;
-        $update->meta_keyword = $request->meta_keyword;
-        $update->footer_info = $request->footer_info;
+        $update->meta_keyword     = $request->meta_keyword;
+        $update->footer_info      = $request->footer_info;
         $update->save();
         toast('Settigns Updated successfully!', 'success');
         return redirect()->back(); 
@@ -43,13 +43,16 @@ class SettingsController extends Controller
     public function ContactInfoUpdate(Request $request)
     {
         //return $request;
-        $update = ContactInfo::first();
-        $update->street = $request->street;
-        $update->city = $request->city;
+        $update            = ContactInfo::first();
+        $update->street    = $request->street;
+        $update->city      = $request->city;
         $update->post_code = $request->post_code;
-        $update->state = $request->state;
-        $update->country = $request->country;
+        $update->state     = $request->state;
+        $update->country   = $request->country;
         $update->full_adds = $request->full_adds;
+        $update->fb        = $request->fb;
+        $update->tw        = $request->tw;
+        $update->yt        = $request->yt;
         $update->save();
         toast('Settigns Updated successfully!', 'success');
         return redirect()->back();
@@ -63,8 +66,8 @@ class SettingsController extends Controller
          $request->validate([
             'header_logo' => 'image',
             'footer_logo' => 'image',
-            'favicon' => 'image',
-            'admin_logo' => 'image',
+            'favicon'     => 'image',
+            'admin_logo'  => 'image',
             
         ]);
 
@@ -91,7 +94,7 @@ class SettingsController extends Controller
                 // saving image
                 $imageResize->save(public_path('storage/propertes/'.$newImageName), 80);
                 //deleting old image
-                File::delete(public_path('storage/propertes/'.$imageUpdate[$name]));
+                File:: delete(public_path('storage/propertes/'.$imageUpdate[$name]));
                 $imageUpdate[$name] = $newImageName;
                 $imageUpdate->save();
                 }

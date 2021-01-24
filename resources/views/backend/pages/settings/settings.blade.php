@@ -107,17 +107,17 @@
     
                                 <div class="form-group">
                                     <label class="floating-label" for="Email">Facebook</label>
-                                    <input name="web_url" type="text" class="form-control" id="Email" aria-describedby="emailHelp" value="{{ $contactInfo->fb }}">
+                                    <input name="fb" type="text" class="form-control" id="Email" aria-describedby="emailHelp" value="{{ $contactInfo->fb }}">
                                 </div>
     
                                 <div class="form-group">
                                     <label class="floating-label" for="Email">Twtter</label>
-                                    <input name="web_url" type="text" class="form-control" id="Email" aria-describedby="emailHelp" value="{{ $contactInfo->tw }}">
+                                    <input name="tw" type="text" class="form-control" id="Email" aria-describedby="emailHelp" value="{{ $contactInfo->tw }}">
                                 </div>
     
                                 <div class="form-group">
                                     <label class="floating-label" for="Email">Youtube</label>
-                                    <input name="web_url" type="text" class="form-control" id="Email" aria-describedby="emailHelp" value="{{ $contactInfo->yt }}">
+                                    <input name="yt" type="text" class="form-control" id="Email" aria-describedby="emailHelp" value="{{ $contactInfo->yt }}">
                                 </div>
     
                                 <input class="float-right btn btn-primary" type="submit" value="Save"> 
