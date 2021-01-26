@@ -4,6 +4,7 @@ body {
     background-color: #fbfcfd;
 }
 
+
 a {
     color: #222;
 }
@@ -12,6 +13,7 @@ a:hover {
     color: #222;
     text-decoration: none;
 }
+
 
 .main-logo {
     width: 200px;

@@ -15,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 /**
+ * Frontend routes
+ */
+
+Route::group(['namespace' => 'Frontend','as' => 'frontend.'], function () {
+    // Index Routes.
+    Route::get('/', 'IndexController@index');
+});
+
+
+
+/**
  * Backend routes
  */
 
