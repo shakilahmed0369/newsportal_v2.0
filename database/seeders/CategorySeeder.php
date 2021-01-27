@@ -16,11 +16,14 @@ class CategorySeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for($i = 0; $i <= 10; $i ++){
-            $category = new Category();
-            $category->categoryName = $faker->word();
-            $category->categorySlug = $faker->word();
-            $category->save();
-        }
+        $category = ['সর্বশেষ', 'রাজনীতি','আন্তর্জাতিক', 'খেলাধুলা', 'বিনোদন', 'এক্সক্লুসিভ', 'মতামত'];
+        
+            foreach($category as $item){
+                $category = new Category();
+                $category->categoryName = $item;
+                $category->categorySlug = $item;
+                $category->save();
+            }
+            
     }
 }

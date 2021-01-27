@@ -11,209 +11,121 @@
         <div class="col-xl-9 col-12 line-right">
 
             <div class="row">
-
-                <div class="col-md-8 line-right">
-
-
-                    <a class="news-box" href="#">
-
-                        <div class="row">
-
-                            <div class="col-md-6 col-12">
-                                <img src="https://images.prothomalo.com/prothomalo-bangla%2F2020-09%2F4dc58fa1-4e01-4fe8-bb4e-366278f87917%2Fgovt.png?rect=0%2C0%2C1600%2C1067&amp;w=500&amp;auto=format%2Ccompress&amp;fmt=webp">
+                @foreach ($featured as $news)
+                    @if ($loop->index == 0)
+                    <div class="col-md-8 line-right">
+                        <a class="news-box" href="#">
+    
+                            <div class="row">
+    
+                                <div class="col-md-6 col-12">
+                                    <img src="{{ asset("storage/uploads/$news->image") }}">
+                                </div>
+                                <div class="col-md-6 col-12 mt-4 mt-md-0">
+                                    <h1>{{ Str::words($news->title, 8) }}</h1>
+                                    <p>{{ Str::words($news->body, 30) }}
+                                    </p>
+                                    <small><i class="fas fa-clock"></i> ১০ মিনিট আগে</small>
+                                </div>
+    
+    
                             </div>
-                            <div class="col-md-6 col-12 mt-4 mt-md-0">
-                                <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                                <p>২০২১ সালে সাধারণ ছুটি ১৪ দিন। তার মধ্যে ছয় দিন পড়েছে সাপ্তাহিক ছুটির দিনে। এ ছাড়া আগামী বছর নির্বাহী আদেশে ছুটি আছে আট দিন। তার মধ্যে এক দিন পড়েছে সাপ্তাহিক ছুটির দিনে। ৩৪ মিনিট আগে
-                                </p>
-
-                                <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                            </div>
-
-
-                        </div>
-
-                    </a>
-
-                </div>
-
-                <div class="col-md-4 mt-4 mt-md-0">
-                    <a class="news-box" href="#">
-
-                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                        <p>২০২১ সালে সাধারণ ছুটি ১৪ দিন। তার মধ্যে ছয় দিন পড়েছে সাপ্তাহিক ছুটির দিনে। এ ছাড়া আগামী বছর নির্বাহী আদেশে ছুটি আছে আট দিন। তার মধ্যে এক দিন পড়েছে সাপ্তাহিক ছুটির দিনে। ৩৪ মিনিট আগে
-                        </p>
-
-                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                    </a>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="line-bottom mt-4 mb-4">
+    
+                        </a>
                     </div>
-                </div>
+                    @endif
+                    @if ($loop->index == 1)
+                    <div class="col-md-4 mt-4 mt-md-0">
+                        <a class="news-box" href="#">
+    
+                            <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
+                            <p>২০২১ সালে সাধারণ ছুটি ১৪ দিন। তার মধ্যে ছয় দিন পড়েছে সাপ্তাহিক ছুটির দিনে। এ ছাড়া আগামী বছর নির্বাহী আদেশে ছুটি আছে আট দিন। তার মধ্যে এক দিন পড়েছে সাপ্তাহিক ছুটির দিনে। ৩৪ মিনিট আগে
+                            </p>
+    
+                            <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
+                        </a>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="line-bottom mt-4 mb-4">
+                        </div>
+                    </div>
+                    @endif
+                @endforeach
 
             </div>
 
 
             <div class="row">
 
+              @foreach ($featured as $news)
+              @if ($loop->index > 1 && $loop->index <= 4)
+             
                 <div class="col-md-4 line-right">
                     <a class="news-box" href="#">
 
                         <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
                         <p>২০২১ সালে সাধারণ ছুটি ১৪ দিন। তার মধ্যে ছয় দিন পড়েছে সাপ্তাহিক ছুটির দিনে। এ ছাড়া আগামী বছর নির্বাহী আদেশে ছুটি আছে আট দিন। তার মধ্যে এক দিন পড়েছে সাপ্তাহিক ছুটির দিনে। ৩৪ মিনিট আগে
                         </p>
-
-                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
+                        <small><i class="fas fa-clock"></i> ১০ মিনিট আগে</small>
                     </a>
-                </div>
+                </div> 
+              @endif
+              @endforeach
 
-                <div class="col-md-4 line-right mt-4 mt-md-0">
-                    <a class="news-box" href="#">
-
-                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                        <p>২০২১ সালে সাধারণ ছুটি ১৪ দিন। তার মধ্যে ছয় দিন পড়েছে সাপ্তাহিক ছুটির দিনে। এ ছাড়া আগামী বছর নির্বাহী আদেশে ছুটি আছে আট দিন। তার মধ্যে এক দিন পড়েছে সাপ্তাহিক ছুটির দিনে। ৩৪ মিনিট আগে
-                        </p>
-
-                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                    </a>
-                </div>
-
-                <div class="col-md-4 mt-4 mt-md-0">
-                    <a class="news-box" href="#">
-
-                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                        <p>২০২১ সালে সাধারণ ছুটি ১৪ দিন। তার মধ্যে ছয় দিন পড়েছে সাপ্তাহিক ছুটির দিনে। এ ছাড়া আগামী বছর নির্বাহী আদেশে ছুটি আছে আট দিন। তার মধ্যে এক দিন পড়েছে সাপ্তাহিক ছুটির দিনে। ৩৪ মিনিট আগে
-                        </p>
-
-                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                    </a>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="line-bottom mt-4 mb-4">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-12 mb-4">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a class="news-bar">
-                                <div class="row">
-                                    <div class="col-4 col-md-6 pr-2">
-                                        <img src="https://images.prothomalo.com/prothomalo-bangla%2F2020-09%2F4dc58fa1-4e01-4fe8-bb4e-366278f87917%2Fgovt.png?rect=0%2C0%2C1600%2C1067&amp;w=500&amp;auto=format%2Ccompress&amp;fmt=webp">
-                                    </div>
-                                    <div class="col-8 col-md-6 pl-2">
-                                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class=" line-bottom mt-0 mt-md-4"></div>
-                        </div>
-                        <div class="col-md-4 mt-4 mt-md-0">
-                            <a class="news-bar">
-
-
-                                <div class="row">
-
-                                    <div class="col-4 col-md-6 pr-2">
-                                        <img src="https://images.prothomalo.com/prothomalo-bangla%2F2020-09%2F4dc58fa1-4e01-4fe8-bb4e-366278f87917%2Fgovt.png?rect=0%2C0%2C1600%2C1067&amp;w=500&amp;auto=format%2Ccompress&amp;fmt=webp">
-                                    </div>
-                                    <div class="col-8 col-md-6 pl-2">
-                                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                                    </div>
-
-
-                                </div>
-
-
-
-                            </a>
-                            <div class=" line-bottom mt-0 mt-md-4"></div>
-                        </div>
-
-                        <div class="col-md-4 mt-4 mt-md-0">
-                            <a class="news-bar">
-
-                                <div class="row">
-
-                                    <div class="col-4 col-md-6 pr-2">
-                                        <img src="https://images.prothomalo.com/prothomalo-bangla%2F2020-09%2F4dc58fa1-4e01-4fe8-bb4e-366278f87917%2Fgovt.png?rect=0%2C0%2C1600%2C1067&amp;w=500&amp;auto=format%2Ccompress&amp;fmt=webp">
-                                    </div>
-                                    <div class="col-8 col-md-6 pl-2">
-                                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                                    </div>
-
-
-                                </div>
-
-                            </a>
-                            <div class="line-bottom mt-0 mt-md-4"></div>
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a class="news-bar">
-
-                                <div class="row">
-
-                                    <div class="col-4 col-md-6 pr-2">
-                                        <img src="https://images.prothomalo.com/prothomalo-bangla%2F2020-09%2F4dc58fa1-4e01-4fe8-bb4e-366278f87917%2Fgovt.png?rect=0%2C0%2C1600%2C1067&amp;w=500&amp;auto=format%2Ccompress&amp;fmt=webp">
-                                    </div>
-                                    <div class="col-8 col-md-6 pl-2">
-                                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                                    </div>
-
-
-                                </div>
-
-                            </a>
-                        </div>
-
-                        <div class="col-md-4 mt-4 mt-md-0">
-                            <a class="news-bar">
-                                <div class="row">
-                                    <div class="col-4 col-md-6 pr-2">
-                                        <img src="https://images.prothomalo.com/prothomalo-bangla%2F2020-09%2F4dc58fa1-4e01-4fe8-bb4e-366278f87917%2Fgovt.png?rect=0%2C0%2C1600%2C1067&amp;w=500&amp;auto=format%2Ccompress&amp;fmt=webp">
-                                    </div>
-                                    <div class="col-8 col-md-6 pl-2">
-                                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-md-4 mt-4 mt-md-0">
-                            <a class="news-bar">
-                                <div class="row">
-                                    <div class="col-4 col-md-6 pr-2">
-                                        <img src="https://images.prothomalo.com/prothomalo-bangla%2F2020-09%2F4dc58fa1-4e01-4fe8-bb4e-366278f87917%2Fgovt.png?rect=0%2C0%2C1600%2C1067&amp;w=500&amp;auto=format%2Ccompress&amp;fmt=webp">
-                                    </div>
-                                    <div class="col-8 col-md-6 pl-2">
-                                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+              <div class="col-md-12">
+                <div class="line-bottom mt-4 mb-4"></div>
+              </div>
 
                 
+            </div>
+
+            
+            <div class="row">
+                <div class="col-md-12 mb-4">
+                    <div class="row">
+                        @foreach ($featured as $news)
+                        @if ($loop->index > 4 && $loop->index <= 7)
+                        <div class="col-md-4">
+                            <a class="news-bar">
+                                <div class="row">
+                                    <div class="col-4 col-md-6 pr-2">
+                                        <img src="https://images.prothomalo.com/prothomalo-bangla%2F2020-09%2F4dc58fa1-4e01-4fe8-bb4e-366278f87917%2Fgovt.png?rect=0%2C0%2C1600%2C1067&amp;w=500&amp;auto=format%2Ccompress&amp;fmt=webp">
+                                    </div>
+                                    <div class="col-8 col-md-6 pl-2">
+                                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
+                                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class=" line-bottom mt-0 mt-md-4"></div>
+                        </div> 
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        @foreach ($featured as $news)
+                           @if ($loop->index > 7 && $loop->index <= 10)
+                           <div class="col-md-4">
+                            <a class="news-bar">
+                                <div class="row">
+                                    <div class="col-4 col-md-6 pr-2">
+                                        <img src="https://images.prothomalo.com/prothomalo-bangla%2F2020-09%2F4dc58fa1-4e01-4fe8-bb4e-366278f87917%2Fgovt.png?rect=0%2C0%2C1600%2C1067&amp;w=500&amp;auto=format%2Ccompress&amp;fmt=webp">
+                                    </div>
+                                    <div class="col-8 col-md-6 pl-2">
+                                        <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
+                                        <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
+                                    </div>
+
+
+                                </div>
+
+                            </a>
+                        </div>
+                           @endif             
+                        @endforeach
 
                     </div>
                 </div>

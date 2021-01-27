@@ -21,7 +21,6 @@ class CreateWebinfosTable extends Migration
             $table->text('site_description')->nullable();
             $table->text('meta_keyword')->nullable();
             $table->text('footer_info')->nullable();
-            $table->string('web_url')->nullable();
             $table->timestamps();
         });
     }

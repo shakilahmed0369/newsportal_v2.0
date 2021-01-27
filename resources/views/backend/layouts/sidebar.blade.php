@@ -122,7 +122,7 @@
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-th-large"></i></span><span class="pcoded-mtext">Site Customization</span></a>
 						<ul class="pcoded-submenu">
 								<li><a href="{{ route('admin.navIndex') }}" >Customize Navbar</a></li>
-								<li><a href="{{ route('admin.homeCustomize') }}" >Manage Video</a></li>	
+								<li><a href="{{ route('admin.homeCustomize') }}" >Customize Site</a></li>	
 						</ul>
 					</li>
 					@endpermitTo

@@ -110,7 +110,7 @@ class NewsController extends Controller
             // Garbing the original image name
             $imageName = $image->getClientOriginalName();
             // Changing the name
-            $newImageName = time().'-'.$imageName;
+            $newImageName = str_replace(' ', '',time().'-'.$imageName);
             // intervention Make image
             $imageResize = Image::make($image->getRealPath());
             // fitting image
@@ -198,7 +198,7 @@ class NewsController extends Controller
             // Garbing the original image name
             $imageName = $image->getClientOriginalName();
             // Changing the name
-            $newImageName = time().'-'.$imageName;
+            $newImageName = str_replace(' ', '', time().'-'.$imageName);
             // intervention Make image
             $imageResize = Image::make($image->getRealPath());
             // fitting image

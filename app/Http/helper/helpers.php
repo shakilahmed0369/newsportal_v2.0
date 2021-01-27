@@ -1,4 +1,5 @@
 <?php
+
 //uniq id generator
 function uId($min,$max){
   $numbers = range($min, $max);
@@ -7,12 +8,12 @@ function uId($min,$max){
 }
   
 //bangla number convener
-    function bnNum($number)
-    {
-      $bn = ["১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০", "ক"];
-      $en = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "a"];
-        return str_replace($en, $bn, $number);
-    }
+function bnNum($number)
+{
+  $bn = ["১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০", "ক"];
+  $en = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "a"];
+    return str_replace($en, $bn, $number);
+}
 
 // Slug generator
 function makeSlug($string, $separator = '-') {
@@ -22,3 +23,4 @@ function makeSlug($string, $separator = '-') {
   $result = preg_replace($re, $subst, $str);
   return $result;
 }
+

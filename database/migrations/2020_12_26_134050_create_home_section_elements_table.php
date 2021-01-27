@@ -15,7 +15,7 @@ class CreateHomeSectionElementsTable extends Migration
     {
         Schema::create('home_section_elements', function (Blueprint $table) {
             $table->id();
-            $table->integer('position');
+            $table->integer('position')->nullable();
             $table->timestamps();
         });
     }

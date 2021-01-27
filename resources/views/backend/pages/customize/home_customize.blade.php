@@ -15,6 +15,7 @@
   <div class="card-body text-center">
       <input type="hidden" name="id-{{ $row->id }}" value="{{ $row->id }}">
       <select name="categoryId-{{ $row->id }}">
+        <option value="">Display None</option>
         @foreach ($categorys as $category) 
         <option
         @if ($category->id == $row->position)
@@ -47,6 +48,7 @@
   <div class="card-body text-center">
       <input type="hidden" name="id-{{$row->id}}" value="{{ $row->id }}">
       <select name="categoryId-{{$row->id}}">
+        <option value="">Display None</option>
         @foreach ($categorys as $category) 
         <option
         @if ($category->id == $row->position)
@@ -79,6 +81,7 @@
           <div class="card-body text-center">
               <input type="hidden" name="id-{{$row->id}}" value="{{$row->id}}">
               <select name="categoryId-{{$row->id}}" id="{{$row->id}}">
+                <option value="">Display None</option>
                 @foreach ($categorys as $category) 
                 <option
                 @if ($category->id == $row->position)
