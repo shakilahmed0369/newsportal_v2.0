@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class HomeSectionElement extends Model
 {
     use HasFactory;
+
+    public function category()
+    {
+       return $this->hasOne(Category::class , 'id', 'position');
+    }
 }

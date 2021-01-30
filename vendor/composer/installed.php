@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ae1f9d8eda6f8d3f99a7ab9939858425f7f20fe4',
+    'reference' => '3e850b389c99286e14b0d00d0e4a75431db6e04b',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -472,7 +472,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ae1f9d8eda6f8d3f99a7ab9939858425f7f20fe4',
+      'reference' => '3e850b389c99286e14b0d00d0e4a75431db6e04b',
     ),
     'laravel/legacy-factories' => 
     array (
@@ -869,6 +869,15 @@
       array (
         0 => '4.1.1',
       ),
+    ),
+    's1k3/bangla-date' => 
+    array (
+      'pretty_version' => '1.0.6',
+      'version' => '1.0.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4e3f159cca7dbf1ee6aadd5d184f61b47d0d66d8',
     ),
     'sebastian/cli-parser' => 
     array (

@@ -141,7 +141,7 @@ class VideoController extends Controller
         $update->video_link = $request->url;
         $update->caption = $request->caption;
         $update->slug = $slug;
-        $update->user_id = 0;
+        $update->auther_id = Auth('admin')->user()->id;
         $update->save();
         toast('Video updated successfully!', 'success');
         return redirect()->route('admin.video.index'); 

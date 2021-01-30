@@ -3909,6 +3909,59 @@
             "install-path": "../realrashid/sweet-alert"
         },
         {
+            "name": "s1k3/bangla-date",
+            "version": "1.0.6",
+            "version_normalized": "1.0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/s1k3/laravel_bangla_date.git",
+                "reference": "4e3f159cca7dbf1ee6aadd5d184f61b47d0d66d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/s1k3/laravel_bangla_date/zipball/4e3f159cca7dbf1ee6aadd5d184f61b47d0d66d8",
+                "reference": "4e3f159cca7dbf1ee6aadd5d184f61b47d0d66d8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "time": "2020-07-14T17:17:02+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "S1K3\\Bangla\\Date\\BanglaDateServiceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "S1K3\\Bangla\\Date\\": "src/"
+                },
+                "files": [
+                    "src/helper/bangla_date.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robin Khan",
+                    "email": "sk118420@gmail.com"
+                }
+            ],
+            "description": "Laravel Library for converting English date to corresponding Bangla Date",
+            "support": {
+                "issues": "https://github.com/s1k3/laravel_bangla_date/issues",
+                "source": "https://github.com/s1k3/laravel_bangla_date/tree/master"
+            },
+            "install-path": "../s1k3/bangla-date"
+        },
+        {
             "name": "sebastian/cli-parser",
             "version": "1.0.1",
             "version_normalized": "1.0.1.0",

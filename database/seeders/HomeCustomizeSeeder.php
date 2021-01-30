@@ -15,9 +15,9 @@ class HomeCustomizeSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 1; $i <= 17; $i++){
+        for($i = 1; $i <= 18; $i++){
             $homeCustomize = new HomeSectionElement();
-            $homeCustomize->position = 0;
+            $homeCustomize->position = null;
             $homeCustomize->save();
         }
 

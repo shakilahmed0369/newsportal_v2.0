@@ -167,6 +167,7 @@ return [
          */
         Yajra\DataTables\DataTablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        S1K3\Bangla\Date\BanglaDateServiceProvider::class,
       
 
         /*

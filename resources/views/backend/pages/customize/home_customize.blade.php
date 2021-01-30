@@ -40,7 +40,7 @@
   </div>
 </div>
 
-@elseif($i == 9)
+@elseif($i > 8 && $i <= 10)
 <div class="card">
   <div class="card-header">
       <h5>Hello card {{$i}}</h5>
@@ -72,7 +72,7 @@
 @endphp
 <div class="row">
   @foreach ($homeCustomize as $row)
-    @if ($i > 9)
+    @if ($i > 10)
       <div class="col-md-3">
         <div class="card">
           <div class="card-header">
