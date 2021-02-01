@@ -79,8 +79,8 @@
         columnDefs: [ {
         targets: 3,
         render: function ( data, type, row ) {
-            return data.length > 10 ?
-        data.substr( 0, 10 ) +'…' :
+            return data.length > 25 ?
+        data.substr( 0, 25 ) +'…' :
         data;
         }
     } ]

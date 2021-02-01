@@ -63,7 +63,7 @@
   //vlaidatign max li limits
   $("#sortable1").on("sortreceive", function(event, ui) {
     var list = $(this);
-    if (list.children().length > 5) {
+    if (list.children().length > 7) {
    $(ui.sender).sortable('cancel');
    }
 }); 

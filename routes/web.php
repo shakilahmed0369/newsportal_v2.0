@@ -20,7 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Frontend','as' => 'frontend.'], function () {
     // Index Routes.
-    Route::get('/', 'IndexController@index');
+    Route::get('/', 'FrontendController@index');
+    //category routes
+    Route::get('/{category}', 'FrontendController@showByCategory')->name('showByCategory');
+
+    //show post Routes
+    Route::get('/news/{cat}/{slug}', 'FrontendController@showNews')->name('showNews');
+    
 });
 
 
@@ -28,7 +34,6 @@ Route::group(['namespace' => 'Frontend','as' => 'frontend.'], function () {
 /**
  * Backend routes
  */
-
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],function(){
     //Dashboard route
@@ -81,11 +86,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'],f
     Route::post('/settings/contactinfo', 'SettingsController@ContactInfoUpdate')->name('settings.contactInfoUpdate');
     Route::post('/settings/imageupdate', 'SettingsController@ImageUpdate')->name('settings.imageUpdate');
 
-    
 });
 
 
-
+//user login route
 Auth::routes();
 
 

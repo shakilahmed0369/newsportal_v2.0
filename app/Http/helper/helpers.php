@@ -1,6 +1,7 @@
 <?php
 use App\Models\News;
 use App\Models\HomeSectionElement;
+
 //uniq id generator
 function uId($min,$max){
   $numbers = range($min, $max);
@@ -25,9 +26,10 @@ function makeSlug($string, $separator = '-') {
   return $result;
 }
 
-// helper query for home index
+// helper query for (frontend) home index
 function mainNews($catId, $offset, $limit){
-  $news = News::where('category_id', $catId)->where('status', 1)->offset($offset)->limit($limit)->latest()->get();
+  $news = News::with('category')->where('category_id', $catId)->where('status', 1)->offset($offset)->limit($limit)->latest()->get();
+ 
   return $news;
 }
 
