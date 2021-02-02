@@ -47,7 +47,6 @@ class FrontendController extends Controller
         
         $categories = Category::where('status', 1)->get();
         $news = News::where('slug', $slug)->first();
-        return $news->category->categorySlug;
 
         $reletedNewses = News::with('category')->where('category_id', $news->category_id)->where('id', '!=', $news->id)->latest()->limit(6)->get();
 
