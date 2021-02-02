@@ -47,7 +47,10 @@ class FrontendController extends Controller
         
         $categories = Category::where('status', 1)->get();
         $news = News::where('slug', $slug)->first();
-        $reletedNewses = News::with('category')->where('category_id', $news->id)->where('id', '!=', $news->id)->latest()->limit(6)->get();
+        return $news->category->categorySlug;
+
+        $reletedNewses = News::with('category')->where('category_id', $news->category_id)->where('id', '!=', $news->id)->latest()->limit(6)->get();
+
         $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
 
         //// Views counter

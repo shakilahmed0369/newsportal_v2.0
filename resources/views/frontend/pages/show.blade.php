@@ -95,8 +95,12 @@
                             <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
 
                         </a>
-                    </div>   
+                    </div> 
+                   
                     @endforeach
+
+                    <a href="{{ route('frontend.showByCategory', [$news->category->categorySlug]) }}" class="btn btn-primary btn-block" style="background: #1c4a7b"><h4 class="m-0" ><b>আরও</b></h4></a>
+
                     
                 </div>
 
