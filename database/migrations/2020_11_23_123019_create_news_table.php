@@ -25,7 +25,7 @@ class CreateNewsTable extends Migration
             $table->integer('category_id');
             $table->integer('on_featured')->nullable();
             $table->integer('on_breaking')->nullable();
-            $table->integer('views')->nullable();
+            $table->integer('views')->default(0);
             $table->integer('status')->nullable();
             $table->timestamps();
         });

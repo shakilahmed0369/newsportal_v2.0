@@ -18,7 +18,7 @@
                 @foreach ($newses as $news)
                 <div class="col-md-4">
 
-                    <a class="news-box mb-4" href="#">
+                    <a class="news-box mb-4" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
 
                         <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
 
@@ -27,7 +27,6 @@
                         </p>
 
                         <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
-
                     </a>
 
                 </div>  

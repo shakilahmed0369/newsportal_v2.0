@@ -214,7 +214,7 @@
                                     <a class="news-box" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                         <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                                         <h1>{{ Str::words($news->title, 8) }}</h1>
-                                        <p>{{ Str::words($news->body, 20, '...') }}
+                                        <p>{{ Str::words($news->body, 25, '...') }}
                                         </p>
                                         <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
 
@@ -235,6 +235,7 @@
 
         @endif 
     {{-- section 1 end here --}}
+
         
     {{-- section 2 starts here --}}
         @if ($section->id == 2 && !$section->position == null)
@@ -393,16 +394,18 @@
                 <div class="col-md-6">
                     @foreach (mainNews($section->position, 1, 4) as $item)
                     <div class="news-bar big">
-                        <div class="row">
-                            <div class="col-4 col-md-4 pr-2">
-                                <img src="{{ asset("storage/uploads/$news->image") }}">
+                        <a href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
+                            <div class="row">
+                                <div class="col-4 col-md-4 pr-2">
+                                    <img src="{{ asset("storage/uploads/$news->image") }}">
+                                </div>
+                                <div class="col-8 col-md-8 pl-2">
+                                    <h1>{{ Str::words($news->title, 8, '...') }}</h1>
+                                    <p class="d-none d-md-block">{{ Str::words($news->body, 25, '...') }}</p>
+                                    <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
+                                </div>
                             </div>
-                            <div class="col-8 col-md-8 pl-2">
-                                <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                                <p class="d-none d-md-block">{{ Str::words($news->body, 25, '...') }}</p>
-                                <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     @if ($loop->index < 3)
                         <div class=" line-bottom mt-0 mt-md-4 mb-4"></div>
@@ -448,7 +451,7 @@
                             <div class=" line-bottom mt-0 mt-md-4 mb-4"></div>
                             @endif
                             @if ($loop->index === 1)
-                            <a class="news-bar">
+                            <a class="news-bar" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                 <div class="row">
                                     <div class="col-4 col-md-4 pr-2">
                                         <img src="{{ asset("storage/uploads/$news->image") }}">
@@ -564,7 +567,7 @@
                     <div class=" line-bottom mt-0 mt-md-4 mb-4"></div>
                     @endif
                     @if ($loop->index === 1)    
-                    <a class="news-bar">
+                    <a class="news-bar" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                         <div class="row">
                             <div class="col-4 col-md-4 pr-2">
                                 <img src="{{ asset("storage/uploads/$news->image") }}">
@@ -886,6 +889,13 @@
         </div>
     </div>
 </div>
+
+<div class="col-md-12 my-5">
+    <div class="line-bottom mt-4 mb-4">
+    </div>
+</div>
+
+
 {{-- footer --}}
 @include('frontend.layouts.footer')
 

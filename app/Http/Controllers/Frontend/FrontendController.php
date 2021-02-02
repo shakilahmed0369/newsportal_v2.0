@@ -8,6 +8,7 @@ use App\Models\HomeSectionElement;
 use App\Models\News;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class FrontendController extends Controller
 {
@@ -32,7 +33,7 @@ class FrontendController extends Controller
         if($category){
             $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
             $categories = Category::where('status', 1)->get();
-            $newses = News::where('category_id', $category->id)->paginate(9);
+            $newses = News::with('category')->where('category_id', $category->id)->paginate(9);
             return view('frontend.pages.category', compact('categories', 'category', 'newses', 'recentNews'));
         }else{
             return abort(404);
@@ -40,16 +41,27 @@ class FrontendController extends Controller
         
     }
 
-    public function showNews($cat, $slug)
+    public function showNews(Request $request,$cat, $slug)
     {
+        
+        
         $categories = Category::where('status', 1)->get();
         $news = News::where('slug', $slug)->first();
-        $reletedNewses = News::where('category_id', $news->id)->where('id', '!=', $news->id)->latest()->limit(6)->get();
+        $reletedNewses = News::with('category')->where('category_id', $news->id)->where('id', '!=', $news->id)->latest()->limit(6)->get();
         $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
-        
+
+        //// Views counter
+        $newsKey = 'news_'.$news->id;
+
+        if(!Cookie::get($newsKey)){
+            $news->increment('views');
+            $news->save();
+            Cookie::queue($newsKey , true , 86400);
+        }
+
         return view('frontend.pages.show', compact('news', 'categories', 'reletedNewses', 'recentNews'));
     }
 
-
+ 
     
 }
