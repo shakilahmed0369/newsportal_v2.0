@@ -1,4 +1,13 @@
 @extends('frontend.layouts.master')
+@section('title')
+    {{ @$webInfo->web_name ?? config('app.name') }}
+@endsection
+@section('description')
+    {{ Str::limit($webInfo->site_description, 160) }}
+@endsection
+@section('keywords')
+    {{ Str::limit($webInfo->meta_keyword, 160) }}
+@endsection
 @section('content')
 {{-- navbar --}}
 @include('frontend.layouts.navbar')

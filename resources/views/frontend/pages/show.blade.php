@@ -1,5 +1,14 @@
 @extends('frontend.layouts.master')
 @section('content')
+@section('title')
+    {{ $news->title .' - '. config('app.name') ?? config('app.name') }}
+@endsection
+@section('description')
+    {{ Str::limit($news->body, 160) ?? Str::limit($webInfo->site_description, 160) }}
+@endsection
+@section('keywords')
+    {{ Str::limit($news->meta_tags, 160) }}
+@endsection
 {{-- navbar --}}
 @include('frontend.layouts.navbar')
     

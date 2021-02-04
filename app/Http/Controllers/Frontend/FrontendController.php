@@ -7,17 +7,23 @@ use App\Models\Category;
 use App\Models\HomeSectionElement;
 use App\Models\News;
 use App\Models\Video;
+use App\Models\Webinfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
 class FrontendController extends Controller
 {
-    
+    public function __construct()
+    {
+        
+    }
 
     public function index()
     {
+        //site meta info
+        $webInfo = Webinfo::first();
+
         $categories = Category::where('status', 1)->get();
-        
         $sections = HomeSectionElement::with('category')->get();
         $featured = News::with('category')->where('on_featured', 1)->where('status', 1)->limit(11)->get();
         $videos = Video::latest()->limit(5)->get();
@@ -26,11 +32,14 @@ class FrontendController extends Controller
         //most readed post
         $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
 
-        return view('frontend.pages.index', compact('featured', 'recentNews', 'sections', 'videos', 'categories', 'mostReaded'));
+        return view('frontend.pages.index', compact('featured', 'recentNews', 'sections', 'videos', 'categories', 'mostReaded', 'webInfo'));
     }
 
     public function showByCategory($category)
     {
+        //site meta info
+        $webInfo = Webinfo::first();
+
         $category = Category::where('categorySlug', $category)->first();
         if($category){
             $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
@@ -38,7 +47,7 @@ class FrontendController extends Controller
             $newses = News::with('category')->where('category_id', $category->id)->paginate(9);
             //most readed post
             $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
-            return view('frontend.pages.category', compact('categories', 'category', 'newses', 'recentNews', 'mostReaded'));
+            return view('frontend.pages.category', compact('categories', 'category', 'newses', 'recentNews', 'mostReaded', 'webInfo'));
         }else{
             return abort(404);
         }
@@ -47,8 +56,10 @@ class FrontendController extends Controller
 
     public function showNews(Request $request,$cat, $slug)
     {
-        
-        
+            
+        //site meta info
+        $webInfo = Webinfo::first();
+
         $categories = Category::where('status', 1)->get();
         $news = News::where('slug', $slug)->first();
 
@@ -68,7 +79,7 @@ class FrontendController extends Controller
         //most readed post
         $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
 
-        return view('frontend.pages.show', compact('news', 'categories', 'reletedNewses', 'recentNews', 'mostReaded'));
+        return view('frontend.pages.show', compact('news', 'categories', 'reletedNewses', 'recentNews', 'mostReaded', 'webInfo'));
     }
 
  
