@@ -23,7 +23,7 @@ class FrontendController extends Controller
         //site meta info
         $webInfo = Webinfo::first();
 
-        $categories = Category::where('status', 1)->get();
+        $categories = Category::all();
         $sections = HomeSectionElement::with('category')->get();
         $featured = News::with('category')->where('on_featured', 1)->where('status', 1)->limit(11)->get();
         $videos = Video::latest()->limit(5)->get();
@@ -43,7 +43,7 @@ class FrontendController extends Controller
         $category = Category::where('categorySlug', $category)->first();
         if($category){
             $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
-            $categories = Category::where('status', 1)->get();
+            $categories = Category::all();
             $newses = News::with('category')->where('category_id', $category->id)->paginate(9);
             //most readed post
             $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
@@ -60,16 +60,13 @@ class FrontendController extends Controller
         //site meta info
         $webInfo = Webinfo::first();
 
-        $categories = Category::where('status', 1)->get();
+        $categories = Category::all();
         $news = News::where('slug', $slug)->first();
-
         $reletedNewses = News::with('category')->where('category_id', $news->category_id)->where('id', '!=', $news->id)->latest()->limit(6)->get();
-
         $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
 
         //// Views counter
         $newsKey = 'news_'.$news->id;
-
         if(!Cookie::get($newsKey)){
             $news->increment('views');
             $news->save();

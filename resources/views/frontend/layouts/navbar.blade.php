@@ -10,9 +10,12 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-md-5 ml-0">
                     @foreach ($categories as $category)
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('frontend.showByCategory', $category->categorySlug) }}"> {{ $category->categoryName }}</a>
-                    </li>
+                    @if ($category->status == 1)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('frontend.showByCategory', $category->categorySlug) }}"> {{ $category->categoryName }}</a>
+                        </li>
+                    @endif
+                    
                     @endforeach
                     
 
@@ -23,21 +26,13 @@
                         
                             <div class="container">
                                 <div class="row text-center ml-md-3">
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
-                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    @foreach ($categories as $category)
+                                        @if ($category->status == 0)
+                                        <a href="{{ route('frontend.showByCategory', $category->categorySlug) }}" class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6">{{ $category->categoryName }}</a>
+                                        @endif
+                                    @endforeach
+                                    
+                                   
                                     
                               
                           
