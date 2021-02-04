@@ -54,7 +54,7 @@ class FrontendController extends Controller
         
     }
 
-    public function showNews(Request $request,$cat, $slug)
+    public function showNews($cat, $slug)
     {
             
         //site meta info
@@ -62,21 +62,27 @@ class FrontendController extends Controller
 
         $categories = Category::all();
         $news = News::where('slug', $slug)->first();
-        $reletedNewses = News::with('category')->where('category_id', $news->category_id)->where('id', '!=', $news->id)->latest()->limit(6)->get();
-        $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
-
-        //// Views counter
-        $newsKey = 'news_'.$news->id;
-        if(!Cookie::get($newsKey)){
-            $news->increment('views');
-            $news->save();
-            Cookie::queue($newsKey , true , 86400);
+        //return $news->category;
+        if(isset($news->category->categorySlug) && $news->category->categorySlug == $cat && $news->slug == $slug){
+            $reletedNewses = News::with('category')->where('category_id', $news->category_id)->where('id', '!=', $news->id)->latest()->limit(6)->get();
+            $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
+    
+            //// Views counter
+            $newsKey = 'news_'.$news->id;
+            if(!Cookie::get($newsKey)){
+                $news->increment('views');
+                $news->save();
+                Cookie::queue($newsKey , true , 86400);
+            }
+    
+            //most readed post
+            $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
+    
+            return view('frontend.pages.show', compact('news', 'categories', 'reletedNewses', 'recentNews', 'mostReaded', 'webInfo'));
+        }else{
+            return abort(404);
         }
-
-        //most readed post
-        $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
-
-        return view('frontend.pages.show', compact('news', 'categories', 'reletedNewses', 'recentNews', 'mostReaded', 'webInfo'));
+       
     }
 
  

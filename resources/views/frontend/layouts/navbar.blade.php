@@ -30,12 +30,7 @@
                                         @if ($category->status == 0)
                                         <a href="{{ route('frontend.showByCategory', $category->categorySlug) }}" class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6">{{ $category->categoryName }}</a>
                                         @endif
-                                    @endforeach
-                                    
-                                   
-                                    
-                              
-                          
+                                    @endforeach                          
                             </div>
                             </div>
                             
