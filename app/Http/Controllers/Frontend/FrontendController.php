@@ -23,8 +23,10 @@ class FrontendController extends Controller
         $videos = Video::latest()->limit(5)->get();
 
         $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
+        //most readed post
+        $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
 
-        return view('frontend.pages.index', compact('featured', 'recentNews', 'sections', 'videos', 'categories'));
+        return view('frontend.pages.index', compact('featured', 'recentNews', 'sections', 'videos', 'categories', 'mostReaded'));
     }
 
     public function showByCategory($category)
@@ -34,7 +36,9 @@ class FrontendController extends Controller
             $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
             $categories = Category::where('status', 1)->get();
             $newses = News::with('category')->where('category_id', $category->id)->paginate(9);
-            return view('frontend.pages.category', compact('categories', 'category', 'newses', 'recentNews'));
+            //most readed post
+            $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
+            return view('frontend.pages.category', compact('categories', 'category', 'newses', 'recentNews', 'mostReaded'));
         }else{
             return abort(404);
         }
@@ -61,7 +65,10 @@ class FrontendController extends Controller
             Cookie::queue($newsKey , true , 86400);
         }
 
-        return view('frontend.pages.show', compact('news', 'categories', 'reletedNewses', 'recentNews'));
+        //most readed post
+        $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
+
+        return view('frontend.pages.show', compact('news', 'categories', 'reletedNewses', 'recentNews', 'mostReaded'));
     }
 
  

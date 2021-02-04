@@ -142,19 +142,22 @@
                 </div>
                 <div class="tab-pane" id="tabs-2" role="tabpanel">
                     <!--secound panel-->
+                    @foreach ($mostReaded as $news)
                     <div class="news-bar mt-4">
-
+                        <a href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                         <div class="row">
 
                             <div class="col-4 col-md-6 pr-2">
-                                <img src="">
+                                <img src="{{ asset("storage/uploads/$news->image") }}">
                             </div>
                             <div class="col-8 col-md-6 pl-2">
-                                <h1> ২০২১ সালে ছুটি ২২ দিন, ৭ দিনই শুক্র–শনি </h1>
-                                <small><i class="fas fa-clock    "></i> ১০ মিনিট আগে</small>
+                                <h1>{{ Str::words($news->title, 8, '...') }}</h1>
+                                <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                             </div>
                         </div>
+                    </a>
                     </div>
+                    @endforeach
                 </div>
             </div>
             <!-- box ad -->

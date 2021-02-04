@@ -4,7 +4,7 @@
             <a class="navbar-brand" href="#">
                 <img src="logo.png" class="main-logo" alt="">
             </a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
@@ -16,15 +16,37 @@
                     @endforeach
                     
 
-
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">বাংলাদেশ</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" href="#">Action 1</a>
-                            <a class="dropdown-item" href="#">Action 2</a>
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> আরও</a>
+                        
+                        <div style="box-shadow: 0 1px 2px rgba(0,0,0,0.3); border-radius: 0px; margin-top: 5px" class="dropdown-menu w-100 top-auto py-4" aria-labelledby="dropdownId">
+                        
+                            <div class="container">
+                                <div class="row text-center ml-md-3">
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    <a class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6" href="#">Action 1</a>
+                                    
+                              
+                          
+                            </div>
+                            </div>
+                            
                         </div>
                     </li>
+
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -33,5 +55,4 @@
             </div>
         </div>
     </nav>
-
 </div>
