@@ -1,8 +1,40 @@
+
 <div class="header">
-    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+    <div style="font-size: 15px" class="desktop-top-header top-header d-print-none bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-9 col-sm-12 offset-xl-0">
+                    <ul class="list-inline text-white top_head_left_part my-1">
+                    <li class="list-inline-item pr-2">ঢাকা, বাংলাদেশ </li>
+                    <li class="list-inline-item pr-2">{{ bangla_date(time() ,"en", "d m y") }},   {{ bangla_date(time() ,"bn", "d m y") }} <br></li>
+                    <li class="list-inline-item pr-2"><a class="text-decoration-none text-white" href="https://www.jugantor.com/todays-paper">আজকের পত্রিকা</a></li>
+                    <li class="list-inline-item pr-2"><a class="text-decoration-none text-white" href="https://epaper.jugantor.com/" target="_blank">ই-পেপার</a></li>
+                    <li class="list-inline-item pr-2"><a class="text-decoration-none text-white" href="https://www.jugantor.com/archive">আর্কাইভ</a></li>
+                    <li class="list-inline-item pr-2"><a class="text-decoration-none text-white" href="https://www.jugantor.com/converter" target="_blank">কনভার্টার</a></li>
+                    <li class="list-inline-item pr-2 border border-0">বেটা ভার্সন</li>
+                    </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-sm-12 pr-2">
+                    <ul class="list-inline text-right text-white my-1">
+                    <li class="list-inline-item"><a class="text-decoration-none text-white" target="_blank" href="https://www.facebook.com/DainikJugantor"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a class="text-decoration-none text-white" target="_blank" href="https://twitter.com/DailyJugantor"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a class="text-decoration-none text-white" target="_blank" href="https://www.youtube.com/channel/UCMe8qPVstLh-7zJJh-r11Yg"><i class="fab fa-youtube"></i></a></li>
+                    <li class="list-inline-item"><a class="text-decoration-none text-white" target="_blank" href="https://www.pinterest.com/DainikJugantor/"><i class="fab fa-pinterest"></i></a></li>
+                    <li class="list-inline-item"><a class="text-decoration-none text-white" target="_blank" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li class="list-inline-item"><a class="text-decoration-none text-white" target="_blank" href="https://www.instagram.com/dainikjugantor/"><i class="fab fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a class="text-decoration-none text-white" target="_blank" href="https://www.jugantor.com/feed/rss.xml"><i class="fas fa-rss"></i></a></li>
+                    </ul>
+                    </div>
+            </div>
+        </div>
+        </div>
+
+
+
+    <nav class="navbar navbar-expand-xl navbar-light bg-light p-1">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="logo.png" class="main-logo" alt="">
+            <a class="navbar-brand" href="/">
+                <img style="width: 140px !important;" src="{{ asset("storage/propertes/logo.png") }}" class="main-logo" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,24 +57,44 @@
                         <div style="box-shadow: 0 1px 2px rgba(0,0,0,0.3); border-radius: 0px; margin-top: 5px" class="dropdown-menu w-100 top-auto py-4" aria-labelledby="dropdownId">
                         
                             <div class="container">
-                                <div class="row text-center ml-md-3">
+
+                            
+                                <div class="row w-100 text-center ml-md-3">
                                     @foreach ($categories as $category)
-                                        @if ($category->status == 0)
+                                        @if (@$category->status == 0)
                                         <a href="{{ route('frontend.showByCategory', $category->categorySlug) }}" class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6">{{ $category->categoryName }}</a>
                                         @endif
-                                    @endforeach                          
-                            </div>
+                                    @endforeach                       
+                                </div>
                             </div>
                             
                         </div>
                     </li>
 
+                    {{-- search button --}}
+                    <li class="nav-link pt-1 ml-md-5">
+                        <a style="font-size: 20px" class="nav-link search-icon icon-search p-0 " data-toggle="collapse" href="#collapseSearch" style="" aria-expanded="false">
+                        <i class="fas fa-search align-bottom"></i>
+                        </a>
+                    </li>
+
+    
+
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-outline-success search my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                </form>
+                
             </div>
         </div>
+
+        
     </nav>
+
+    <div class="search-box bg-white mt-2">
+        <div style="background-color:#dfdfdf !important" class="input-group input-group-lg mb-0 pb-0 w-100 p-0 mb-0 bg-white rounded srch_form collapse" id="collapseSearch">
+            <input type="text" name="q" class="form-control srch_keyword" placeholder="সার্চ করুন..." value="">
+            <div class="input-group-append">
+            <button style="background-color: #1c4a7b !important; color: #ffff;" class="btn btn-sm" type="button"><i class="fas fa-search srch_btn"></i></button>
+            <button  class="btn btn-sm btn-danger search-icon" data-toggle="collapse" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch" type="button"><i class="fas fa-times text-white"></i></button>
+            </div>
+        </div>
+    </div>
 </div>
