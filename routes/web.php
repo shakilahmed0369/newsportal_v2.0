@@ -26,6 +26,10 @@ Route::group(['namespace' => 'Frontend','as' => 'frontend.'], function () {
 
     //show post Routes
     Route::get('/news/{cat}/{slug}', 'FrontendController@showNews')->name('showNews');
+    //search Route
+    Route::get('/news/search', 'FrontendController@search')->name('search');
+
+    
     
 });
 

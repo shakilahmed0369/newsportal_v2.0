@@ -20,7 +20,7 @@
 
                 <div class="col-md-12">
                     <div class=" mt-4 mb-4">
-                        <h2 class="cat-title">{{ $category->categoryName }} <i class="far fa-arrow-alt-circle-right"></i></h2>
+                        <h2 class="cat-title"> ( @php echo bnNum(count($newses)) @endphp ) <i class="far fa-arrow-alt-circle-right"></i></h2>
                     </div>
                 </div>
 
@@ -119,16 +119,14 @@
         </div>
          <!--banner ad end-->
 
-
-
         <div class="col-md-12">
             <div class="line-bottom mt-4 mb-4">
             </div>
         </div>
 
-        {{-- pagination starts --}}
-            {{ $newses->links() }}
-        {{-- pagination starts ends--}}
+    {{-- pagination starts --}}
+        {{ $newses->links() }}
+    {{-- pagination starts ends--}}
         
         
 
@@ -139,5 +137,4 @@
 </div>
 
 @include('frontend.layouts.footer')
-
 @endsection

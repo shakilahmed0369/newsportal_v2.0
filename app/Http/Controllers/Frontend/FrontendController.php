@@ -85,6 +85,21 @@ class FrontendController extends Controller
        
     }
 
+
+    //search query
+    public function search(Request $request)
+    {
+        //site meta info
+        $webInfo = Webinfo::first();
+
+        $newses = News::where('title', 'LIKE', '%'.$request->keywords.'%')->orderBy('id', 'desc')->paginate(6);
+
+        $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();
+        $categories = Category::all();
+        $mostReaded = News::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->where('status', 1)->orderBy('views', 'desc')->limit(4)->get();
+        return view('frontend.pages.search', compact('webInfo', 'newses', 'recentNews', 'categories', 'mostReaded'));
+    }
+
  
     
 }

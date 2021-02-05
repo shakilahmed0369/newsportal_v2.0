@@ -91,10 +91,10 @@
     <div class="search-box bg-white mt-2">
         
             
-            <form action="" style="background-color:#dfdfdf !important" class="input-group input-group-lg mb-0 pb-0 w-100 p-0 mb-0 bg-white rounded srch_form collapse" id="collapseSearch">
-                <input type="text" name="search" class="form-control srch_keyword" placeholder="সার্চ করুন..." value="">
+            <form action="{{ route('frontend.search' ) }}" method="GET" style="background-color:#dfdfdf !important" class="input-group input-group-lg mb-0 pb-0 w-100 p-0 mb-0 bg-white rounded srch_form collapse" id="collapseSearch">
+                <input type="text" name="keywords" class="form-control srch_keyword" placeholder="সার্চ করুন..." value="">
                 <div class="input-group-append">
-                    <button style="background-color: #1c4a7b !important; color: #ffff;" class="btn btn-sm" type="button"><i class="fas fa-search srch_btn"></i></button>
+                    <button style="background-color: #1c4a7b !important; color: #ffff;" class="btn btn-sm" type="submit"><i class="fas fa-search srch_btn"></i></button>
                     <button  class="btn btn-sm btn-danger search-icon" data-toggle="collapse" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch" type="button"><i class="fas fa-times text-white"></i></button>
                     </div>
             </form>
@@ -110,7 +110,7 @@
           @foreach (breakingNews() as $news)
             <li>
                 <img style="margin-right:12px" width="50px" src="{{ asset("storage/propertes/logo.png") }}" alt="">
-                <a href="#"><b>{{ $news->title }}</b></a>
+                <a href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}"><b>{{ $news->title }}</b></a>
             </li>
             
           @endforeach
