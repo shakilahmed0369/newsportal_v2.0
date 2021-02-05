@@ -1,6 +1,6 @@
 
 <div class="header">
-    <div style="font-size: 15px" class="desktop-top-header top-header d-print-none bg-dark">
+    <div style="font-size: 15px; background-color: #1c4a7b" class="desktop-top-header top-header d-print-none ">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-9 col-lg-9 col-sm-12 offset-xl-0">
@@ -59,7 +59,7 @@
                             <div class="container">
 
                             
-                                <div class="row w-100 text-center ml-md-3">
+                                <div class="row w-100 text-left ml-md-3">
                                     @foreach ($categories as $category)
                                         @if (@$category->status == 0)
                                         <a href="{{ route('frontend.showByCategory', $category->categorySlug) }}" class="py-2 nav-link dropdown-item col-xl-2 col-lg-2 col-sm-6 col-md-6">{{ $category->categoryName }}</a>
@@ -73,8 +73,8 @@
 
                     {{-- search button --}}
                     <li class="nav-link pt-1 ml-md-5">
-                        <a style="font-size: 20px" class="nav-link search-icon icon-search p-0 " data-toggle="collapse" href="#collapseSearch" style="" aria-expanded="false">
-                        <i class="fas fa-search align-bottom"></i>
+                        <a style="font-size: 20px;" class="nav-link search-icon icon-search p-0 " data-toggle="collapse" href="#collapseSearch" style="" aria-expanded="false">
+                        <i style="color:#1c4a7b" class="fas fa-search align-bottom"></i>
                         </a>
                     </li>
 
@@ -89,12 +89,40 @@
     </nav>
 
     <div class="search-box bg-white mt-2">
-        <div style="background-color:#dfdfdf !important" class="input-group input-group-lg mb-0 pb-0 w-100 p-0 mb-0 bg-white rounded srch_form collapse" id="collapseSearch">
-            <input type="text" name="q" class="form-control srch_keyword" placeholder="সার্চ করুন..." value="">
-            <div class="input-group-append">
-            <button style="background-color: #1c4a7b !important; color: #ffff;" class="btn btn-sm" type="button"><i class="fas fa-search srch_btn"></i></button>
-            <button  class="btn btn-sm btn-danger search-icon" data-toggle="collapse" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch" type="button"><i class="fas fa-times text-white"></i></button>
-            </div>
-        </div>
+        
+            
+            <form action="" style="background-color:#dfdfdf !important" class="input-group input-group-lg mb-0 pb-0 w-100 p-0 mb-0 bg-white rounded srch_form collapse" id="collapseSearch">
+                <input type="text" name="search" class="form-control srch_keyword" placeholder="সার্চ করুন..." value="">
+                <div class="input-group-append">
+                    <button style="background-color: #1c4a7b !important; color: #ffff;" class="btn btn-sm" type="button"><i class="fas fa-search srch_btn"></i></button>
+                    <button  class="btn btn-sm btn-danger search-icon" data-toggle="collapse" href="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch" type="button"><i class="fas fa-times text-white"></i></button>
+                    </div>
+            </form>
+            
+        
     </div>
 </div>
+
+<div style="position: fixed" class="acme-news-ticker fixed-bottom d-none d-md-block" >
+    <div class="acme-news-ticker-label">News Ticker Label</div>
+    <div class="acme-news-ticker-box">
+      <ul class="my-news-ticker">
+          @foreach (breakingNews() as $news)
+            <li>
+                <img style="margin-right:12px" width="50px" src="{{ asset("storage/propertes/logo.png") }}" alt="">
+                <a href="#"><b>{{ $news->title }}</b></a>
+            </li>
+            
+          @endforeach
+        
+
+      </ul>
+    </div>
+    <div class="acme-news-ticker-controls acme-news-ticker-horizontal-controls">
+      <span class="acme-news-ticker-arrow acme-news-ticker-prev"></span>
+      <span class="acme-news-ticker-pause"></span>
+      <span class="acme-news-ticker-arrow acme-news-ticker-next"></span>
+    </div>
+  </div>
+
+  

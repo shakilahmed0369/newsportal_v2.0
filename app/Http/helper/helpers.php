@@ -33,5 +33,10 @@ function mainNews($catId, $offset, $limit){
   return $news;
 }
 
+function breakingNews(){
+  $news = News::where('on_breaking', 1)->orderBy('id', 'DESC')->get();
+  return $news;
+}
+
 
 
