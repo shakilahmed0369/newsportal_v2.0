@@ -99,12 +99,30 @@
                 </div>
             </div>
             <!-- box ad -->
-            <div class="mt-2">
-                <img class="img-fluid" src="https://via.placeholder.com/300.png" alt="">
-            </div>
+             <!-- box ad -->
+             @foreach (ad() as $ad)
+             @if ($ad->adname == 'categoiesPage-box-ad' && $ad->adtype == 1)
+                 <div class="mt-2">
+                     <img class="img-fluid" src="{{ asset("storage/ad/$ad->adimage") }}" alt="">
+                 </div>
+             @endif
+             @if ($ad->adname == 'categoiesPage-box-ad' && $ad->adtype == 2)
+                 {{ $ad->adscript }}
+             @endif
+         @endforeach
         </div>
         <!-- side panel ends -->
 
+
+
+
+
+
+
+
+        {{-- pagination starts --}}
+            {{ $newses->links() }}
+        {{-- pagination starts ends--}}
 
         <div class="col-md-12">
             <div class="line-bottom mt-4 mb-4">
@@ -114,22 +132,23 @@
         <!--banner ad-->
         <div class="col-md-12">
             <div class="text-center">
-                <img src="https://via.placeholder.com/970x90" alt="">
+                @foreach (ad() as $ad)
+                @if ($ad->adname == 'categoriesPage-banner-ad-1' && $ad->adtype == 1)
+                    
+                        <img class="img-fluid" src="{{ asset("storage/ad/$ad->adimage") }}" alt="">
+                    
+                @endif
+                @if ($ad->adname == 'categoriesPage-box-ad-1' && $ad->adtype == 2)
+                    {{ $ad->adscript }}
+                @endif
+                @endforeach
             </div>
         </div>
          <!--banner ad end-->
-
-
-
         <div class="col-md-12">
             <div class="line-bottom mt-4 mb-4">
             </div>
         </div>
-
-        {{-- pagination starts --}}
-            {{ $newses->links() }}
-        {{-- pagination starts ends--}}
-        
         
 
 

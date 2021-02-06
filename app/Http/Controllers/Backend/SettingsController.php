@@ -53,6 +53,7 @@ class SettingsController extends Controller
         $update->fb        = $request->fb;
         $update->tw        = $request->tw;
         $update->yt        = $request->yt;
+        $update->email        = $request->email;
         $update->save();
         toast('Settigns Updated successfully!', 'success');
         return redirect()->back();

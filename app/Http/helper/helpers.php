@@ -1,6 +1,13 @@
 <?php
+
+use App\Models\Ad;
+use App\Models\Category;
+use App\Models\ContactInfo;
 use App\Models\News;
 use App\Models\HomeSectionElement;
+use App\Models\Webinfo;
+use App\Models\Webproperties;
+
 
 //uniq id generator
 function uId($min,$max){
@@ -32,11 +39,39 @@ function mainNews($catId, $offset, $limit){
  
   return $news;
 }
-
+// breaking news
 function breakingNews(){
   $news = News::where('on_breaking', 1)->orderBy('id', 'DESC')->get();
   return $news;
 }
+//ads
+function ad(){
+  $ad = Ad::all();
+  return $ad;
+}
+//Webproperties
+function webLogo(){
+  $weblogo = Webproperties::first();
+  return $weblogo;
+}
+
+//webinfo
+function webInfo(){
+  $webinfo = Webinfo::first();
+  return $webinfo;
+}
+
+//webinfo
+function contactInfo(){
+  $contacinfo = ContactInfo::first();
+  return $contacinfo;
+}
+
+function footer_cat(){
+  $contacinfo = Category::all();
+  return $contacinfo;
+}
+
 
 
 

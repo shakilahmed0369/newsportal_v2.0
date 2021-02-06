@@ -119,6 +119,11 @@
                                     <label class="floating-label" for="Email">Youtube</label>
                                     <input name="yt" type="text" class="form-control" id="Email" aria-describedby="emailHelp" value="{{ $contactInfo->yt }}">
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="floating-label" for="Email">Email</label>
+                                    <input name="email" type="text" class="form-control" id="Email" aria-describedby="emailHelp" value="{{ $contactInfo->yt }}">
+                                </div>
     
                                 <input class="float-right btn btn-primary" type="submit" value="Save"> 
     

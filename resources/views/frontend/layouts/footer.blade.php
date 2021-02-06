@@ -6,14 +6,14 @@
 
 
                     <a href="">
-                        <img src="logo.png" style="width: 220px;">
+                        <img class="img-fluid" src="{{ asset("storage/propertes/".webLogo()->header_logo) }}" style="width: 220px;">
                     </a>
-                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio blanditiis quia ex molestiae ad ipsum hic voluptate nam accusamus repellendus culpa repudiandae animi ipsam est, nemo vitae id maxime! Similique.</p>
+                    <p>{{ webInfo()->site_description }}</p>
                     <ul class="contact-details mb-2">
 
                         <li>
                             <span class="fas fa-envelope-open"></span>
-                            <a href="mailto:info@thetopnews24.com">info@deshdorpon.com</a>
+                            <a href="mailto:{{ contactInfo()->email }}">{{ contactInfo()->email }}</a>
                         </li>
 
                     </ul>
@@ -42,31 +42,17 @@
                 <div class="footer-menu footer-menu--1">
 
                     <ul>
+                        @foreach (footer_cat() as $category)
+                            
+                        @if ($loop->index <= 9)
+                        <li> 
+                            <a href="{{ route('frontend.showByCategory', $category->categorySlug) }}"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; {{ $category->categoryName }}</a>
+                        </li>
+                        @endif
+                       
 
-                        <li>
-                            <a href="কোভিড১৯"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; কোভিড১৯</a>
-                        </li>
-                        <li>
-                            <a href="জাতীয়"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; জাতীয়</a>
-                        </li>
-                        <li>
-                            <a href="রাজনীতি"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; রাজনীতি</a>
-                        </li>
-                        <li>
-                            <a href="দেশজুড়ে"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; দেশজুড়ে</a>
-                        </li>
-                        <li>
-                            <a href="বিনোদন"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; বিনোদন</a>
-                        </li>
-                        <li>
-                            <a href="খেলাধুলা"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; খেলাধুলা</a>
-                        </li>
-                        <li>
-                            <a href="স্মরণীয়-দিন-"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; স্মরণীয় দিন </a>
-                        </li>
-                        <li>
-                            <a href="সম্পাদকীয়-"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; সম্পাদকীয় </a>
-                        </li>
+                        @endforeach
+                       
 
 
                     </ul>
@@ -86,30 +72,16 @@
 
                     <ul>
 
-                        <li>
-                            <a href="আন্তর্জাতিক"> আন্তর্জাতিক  &nbsp; &nbsp; <i class="far fa-arrow-alt-circle-right"></i></a>
+                        @foreach (footer_cat() as $category)
+                            
+                        @if ($loop->index > 9 && $loop->index > 19)
+                        <li> 
+                            <a href="{{ route('frontend.showByCategory', $category->categorySlug) }}"><i class="far fa-arrow-alt-circle-right"></i> &nbsp; &nbsp; {{ $category->categoryName }}</a>
                         </li>
-                        <li>
-                            <a href="প্রবাস-সংবাদ"> প্রবাস সংবাদ  &nbsp; &nbsp; <i class="far fa-arrow-alt-circle-right"></i></a>
-                        </li>
-                        <li>
-                            <a href="বিবিধ-"> বিবিধ   &nbsp; &nbsp; <i class="far fa-arrow-alt-circle-right"></i></a>
-                        </li>
-                        <li>
-                            <a href="-বিজ্ঞান-ও-প্রযুক্তি-">  বিজ্ঞান ও প্রযুক্তি   &nbsp; &nbsp; <i class="far fa-arrow-alt-circle-right"></i></a>
-                        </li>
-                        <li>
-                            <a href="লেখালেখি"> লেখালেখি  &nbsp; &nbsp; <i class="far fa-arrow-alt-circle-right"></i></a>
-                        </li>
-                        <li>
-                            <a href="-শিক্ষা">  শিক্ষা  &nbsp; &nbsp; <i class="far fa-arrow-alt-circle-right"></i></a>
-                        </li>
-                        <li>
-                            <a href="স্বাস্থ্য"> স্বাস্থ্য  &nbsp; &nbsp; <i class="far fa-arrow-alt-circle-right"></i></a>
-                        </li>
-                        <li>
-                            <a href="-ধর্ম">  ধর্ম  &nbsp; &nbsp; <i class="far fa-arrow-alt-circle-right"></i></a>
-                        </li>
+                        @endif
+                       
+
+                        @endforeach
 
 
                     </ul>
@@ -129,7 +101,7 @@
 
         <div class="col-md-12 mb-5">
             <center>
-                <p class="copyright">স্বত্ব © ২০২০ প্রথম আলো সম্পাদক ও প্রকাশক: মতিউর রহমান</p>
+                <p class="copyright">{{ webInfo()->footer_info }}</p>
             </center>
         </div>
 

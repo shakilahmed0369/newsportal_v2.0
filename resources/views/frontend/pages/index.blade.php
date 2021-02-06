@@ -13,6 +13,8 @@
 @include('frontend.layouts.navbar')
 <div class="container mt-4">
     <div class="row">
+
+<!-- ################### Fetured Post Panel Starts Here ####################### -->
         <div class="col-xl-9 col-12 line-right">
 
             <div class="row">
@@ -123,6 +125,7 @@
             </div>
         </div>
 
+
         <!-- side panel -->
         <div class="col-md-3">
             <ul class="nav nav-tabs" role="tablist">
@@ -178,30 +181,28 @@
                 </div>
             </div>
             <!-- box ad -->
-            <div class="mt-2">
-                <img class="img-fluid" src="https://via.placeholder.com/300.png" alt="">
-            </div>
+            @foreach (ad() as $ad)
+                @if ($ad->adname == 'homePage-box-ad' && $ad->adtype == 1)
+                    <div class="mt-2">
+                        <img class="img-fluid" src="{{ asset("storage/ad/$ad->adimage") }}" alt="">
+                    </div>
+                @endif
+                @if ($ad->adname == 'homePage-box-ad' && $ad->adtype == 2)
+                    {{ $ad->adscript }}
+                @endif
+            @endforeach
+            
         </div>
         <!-- side panel ends -->
+<!-- ################### Fetured Post Panel Ends Here ####################### -->
 
-
+        
         <div class="col-md-12">
             <div class="line-bottom mt-4 mb-4">
             </div>
         </div>
 
-        <!--banner ad-->
-        <div class="col-md-12">
-            <div class="text-center">
-                <img src="https://via.placeholder.com/970x90" alt="">
-            </div>
-        </div>
-         <!--banner ad end-->
-
-        <div class="col-md-12">
-            <div class="line-bottom mt-4 mb-4">
-            </div>
-        </div>
+       
 
 
 
@@ -336,9 +337,36 @@
                 <div class="line-bottom mt-4 mb-4"></div>
             </div>
             {{-- Dvider end--}}
+
+            <!--banner ad-->
+            <div class="col-md-12">
+                <div class="text-center">
+                    @foreach (ad() as $ad)
+                    @if ($ad->adname == 'homePage-banner-ad-1' && $ad->adtype == 1)
+                        
+                            <img class="img-fluid" src="{{ asset("storage/ad/$ad->adimage") }}" alt="">
+                        
+                    @endif
+                    @if ($ad->adname == 'homePage-box-ad' && $ad->adtype == 2)
+                        {{ $ad->adscript }}
+                    @endif
+                @endforeach
+                </div>
+            </div>
+            <!--banner ad end-->
+
+            {{-- <div class="col-md-12">
+                <div class="line-bottom mt-4 mb-4">
+                </div>
+            </div> --}}
         @endif 
 
     {{-- Section 2 ends here --}}
+
+
+
+
+
 
 
     {{-- Section 3 starts here --}}
@@ -432,15 +460,36 @@
             </div>
         </div>
         {{-- Dvider end --}}
+
+        <!--banner ad-->
+        <div class="col-md-12">
+            <div class="text-center">
+                @foreach (ad() as $ad)
+                @if ($ad->adname == 'homePage-banner-ad-2' && $ad->adtype == 1)
+                    
+                        <img class="img-fluid" src="{{ asset("storage/ad/$ad->adimage") }}" alt="">
+                    
+                @endif
+                @if ($ad->adname == 'homePage-box-ad-2' && $ad->adtype == 2)
+                    {{ $ad->adscript }}
+                @endif
+            @endforeach
+            </div>
+        </div>
+        <!--banner ad end-->
+
+        {{-- <div class="col-md-12">
+            <div class="line-bottom mt-4 mb-4">
+            </div>
+        </div> --}}
         @endif
 {{-- section 4 ends here --}}
 
+
     
 
-        
 
-
-    {{-- section 5 starts here --}}
+{{-- section 5 starts here --}}
         @if ($section->id == 5 && !$section->position == null)
             <div class="col-md-12">
                 <div class=" mt-4 mb-4">
@@ -625,6 +674,28 @@
             <div class="line-bottom mt-4 mb-4"></div>
         </div>
         {{-- Dvider end--}}
+
+        <!--banner ad-->
+        <div class="col-md-12">
+            <div class="text-center">
+                @foreach (ad() as $ad)
+                @if ($ad->adname == 'homePage-banner-ad-3' && $ad->adtype == 1)
+                    
+                        <img class="img-fluid" src="{{ asset("storage/ad/$ad->adimage") }}" alt="">
+                    
+                @endif
+                @if ($ad->adname == 'homePage-box-ad-3' && $ad->adtype == 2)
+                    {{ $ad->adscript }}
+                @endif
+            @endforeach
+            </div>
+        </div>
+        <!--banner ad end-->
+
+        {{-- <div class="col-md-12">
+            <div class="line-bottom mt-4 mb-4">
+            </div>
+        </div> --}}
     @endif
     {{-- Section 6 ends here --}}
  
@@ -830,6 +901,27 @@
         </div>
     </div>
     {{-- Dvider end--}}
+    <!--banner ad-->
+    <div class="col-md-12">
+        <div class="text-center">
+            @foreach (ad() as $ad)
+                @if ($ad->adname == 'homePage-banner-ad-2' && $ad->adtype == 1)
+                    
+                        <img class="img-fluid" src="{{ asset("storage/ad/$ad->adimage") }}" alt="">
+                    
+                @endif
+                @if ($ad->adname == 'homePage-box-ad-2' && $ad->adtype == 2)
+                    {{ $ad->adscript }}
+                @endif
+            @endforeach
+        </div>
+    </div>
+    <!--banner ad end-->
+
+    {{-- <div class="col-md-12">
+        <div class="line-bottom mt-4 mb-4">
+        </div>
+    </div> --}}
     @endif 
 {{-- section 10 end here --}}
 

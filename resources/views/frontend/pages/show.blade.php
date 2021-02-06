@@ -113,7 +113,6 @@
                     
                 </div>
 
-
             </div>
             <!-- side panel -->
         <div class="col-md-3">
@@ -171,7 +170,17 @@
             </div>
             <!-- box ad -->
             <div class="mt-2">
-                <img class="img-fluid" src="https://via.placeholder.com/300.png" alt="">
+                 <!-- box ad -->
+            @foreach (ad() as $ad)
+            @if ($ad->adname == 'showPage-box-ad' && $ad->adtype == 1)
+                <div class="mt-2">
+                    <img class="img-fluid" src="{{ asset("storage/ad/$ad->adimage") }}" alt="">
+                </div>
+            @endif
+            @if ($ad->adname == 'showPage-box-ad' && $ad->adtype == 2)
+                {{ $ad->adscript }}
+            @endif
+            @endforeach
             </div>
         </div>
         <!-- side panel ends -->
@@ -183,6 +192,27 @@
                 </div>
             </div>
 
+             <!--banner ad-->
+             <div class="col-md-12">
+                <div class="text-center">
+                    @foreach (ad() as $ad)
+                    @if ($ad->adname == 'showPage-banner-ad-1' && $ad->adtype == 1)
+                        
+                            <img class="img-fluid" src="{{ asset("storage/ad/$ad->adimage") }}" alt="">
+                        
+                    @endif
+                    @if ($ad->adname == 'showPage-box-ad-1' && $ad->adtype == 2)
+                        {{ $ad->adscript }}
+                    @endif
+                @endforeach
+                </div>
+            </div>
+            <!--banner ad end-->
+
+            <div class="col-md-12">
+                <div class="line-bottom mt-4 mb-4">
+                </div>
+            </div>
 
         </div>
     </div>

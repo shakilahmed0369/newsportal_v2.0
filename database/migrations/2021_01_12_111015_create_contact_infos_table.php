@@ -24,6 +24,7 @@ class CreateContactInfosTable extends Migration
             $table->string('fb')->nullable();
             $table->string('tw')->nullable();
             $table->string('yt')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }
