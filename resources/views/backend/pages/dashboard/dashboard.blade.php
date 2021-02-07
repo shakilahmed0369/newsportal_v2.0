@@ -13,7 +13,7 @@
                         <i class="far fa-newspaper"></i>
                     </div>
                     <div class="col-sm-9">
-                        <h4>@php $d = count($news); echo $d; @endphp</h4>
+                        <h4>{{ $news }}</h4>
                         <h6>News Published</h6>
                     </div>
                 </div>

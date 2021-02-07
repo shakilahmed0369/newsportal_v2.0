@@ -19,7 +19,7 @@ class DashboardController extends Controller
     
     public function index()
     {
-        $news = News::all();
+        $news = News::count();
         $categoryCount = Category::count();
         $gallery = Gallery::count();
         $videos = Video::count();
