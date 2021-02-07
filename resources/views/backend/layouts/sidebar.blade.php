@@ -130,21 +130,21 @@
 
 
 					{{-- customize item --}}
-					@admin('admin')
+					@permitToParent('Ad')
 					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/customize*')) ? 'pcoded-toggle' : '' }}">
 						<a href="" onclick="event.preventDefault()" class="nav-link "><span class="pcoded-micon"><i class="fas fa-ad"></i></span><span class="pcoded-mtext">Advertisement</span></a>
 						<ul class="pcoded-submenu">
 								<li><a href="{{ route('admin.ad.index') }}" >Ad Unit</a></li>	
 						</ul>
 					</li>
-					@endadmin
+					@endpermitTo
 
 					{{-- customize item --}}
-					@admin('admin')
-					<li class="nav-item pcoded-hasmenu {{ (request()->is('admin/settings*')) ? 'pcoded-toggle' : '' }}">
+					@permitToParent('Settings')
+					<li class="nav-item {{ (request()->is('admin/settings*')) ? 'pcoded-toggle' : '' }}">
 						<a href="{{ route('admin.settings.index') }}" class="nav-link "><span class="pcoded-micon"><i class="fas fa-cog"></i></span><span class="pcoded-mtext">Settings</span></a>
 					</li>
-					@endadmin
+					@endpermitTo
 
 					{{-- Admin item --}}
 					@admin('super') 
