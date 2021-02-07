@@ -58,7 +58,7 @@
               @foreach ($featured as $news)
               @if ($loop->index > 1 && $loop->index <= 4)
              
-                <div class="col-md-4 line-right">
+                <div class="col-md-4 line-right mb-4 mb-lg-0">
                     <a class="news-box" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                         <h1>{{ Str::words($news->title, 8) }}</h1>
                         <p>{{ Str::words($news->body, 30) }}</p>
@@ -81,7 +81,7 @@
                     <div class="row">
                         @foreach ($featured as $news)
                         @if ($loop->index > 4 && $loop->index <= 7)
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-4 mb-lg-0">
                             <a class="news-bar" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                 <div class="row">
                                     <div class="col-4 col-md-6 pr-2">
@@ -104,7 +104,7 @@
                     <div class="row">
                         @foreach ($featured as $news)
                            @if ($loop->index > 7 && $loop->index <= 10)
-                           <div class="col-md-4">
+                           <div class="col-md-4 mb-4 mb-lg-0">
                             <a class="news-bar" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                 <div class="row">
                                     <div class="col-4 col-md-6 pr-2">
@@ -127,7 +127,7 @@
 
 
         <!-- side panel -->
-        <div class="col-md-3">
+        <div class="col-xl-3 col mt-sm-5 mt-xl-0">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">First Panel</a>
@@ -147,10 +147,10 @@
 
                         <div class="row">
 
-                            <div class="col-4 col-md-6 pr-2">
-                                <img src="{{ asset("storage/uploads/$news->image") }}">
+                            <div class="col-4 col-lg-2 col-md-4 col-sm-4  col-xl-6 pr-2">
+                                <img style="height: 78px; width:117px" src="{{ asset("storage/uploads/$news->image") }}">
                             </div>
-                            <div class="col-8 col-md-6 pl-2">
+                            <div class="col-8 col-lg-10 col-md-8 col-sm-8 col-xl-6 pl-2">
                                 <h1>{{ Str::words($news->title, 8) }}</h1>
                                 <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                             </div>
@@ -167,10 +167,10 @@
                          <a href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                          <div class="row">
  
-                             <div class="col-4 col-md-6 pr-2">
-                                 <img src="{{ asset("storage/uploads/$news->image") }}">
+                             <div class="col-2  col-xl-6 pr-2">
+                                 <img style="height: 78px; width:117px" src="{{ asset("storage/uploads/$news->image") }}">
                              </div>
-                             <div class="col-8 col-md-6 pl-2">
+                             <div class="col-10  col-xl-6 pl-2">
                                  <h1>{{ Str::words($news->title, 8, '...') }}</h1>
                                  <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                              </div>
@@ -224,7 +224,7 @@
                         <div class="row">
                             @foreach (mainNews($section->position, 0, 4) as $news)
                                 <div class="col-md-3">
-                                    <a class="news-box" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
+                                    <a class="news-box mb-sm-4" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                         <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                                         <h1>{{ Str::words($news->title, 8) }}</h1>
                                         <p>{{ Str::words($news->body, 25, '...') }}
@@ -261,7 +261,7 @@
             <div class="col-md-12">
                 <div class="row">
                     
-                    <div class="col-md-4 line-right">
+                    <div class="col-lg-4  line-right">
                         @foreach (mainNews($section->position, 0, 2) as $news)
                             @if ($loop->index === 0)
                             <a class="news-box mb-4" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
@@ -273,7 +273,7 @@
                             <div class=" line-bottom mt-0 mt-md-4 mb-4"></div>
                             @endif
                             @if ($loop->index === 1)
-                            <a class="news-bar">
+                            <a class="news-bar mb-4">
                                 <div class="row">
                                     <div class="col-4 col-md-4 pr-2">
                                         <img src="{{ asset("storage/uploads/$news->image") }}">
@@ -289,9 +289,9 @@
                         @endforeach
                     </div>
     
-                    <div class="col-md-4  line-right">
+                    <div class="col-lg-4   line-right">
                         @foreach (mainNews($section->position, 2, 4) as $news)
-                        <a class="news-bar" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
+                        <a class="news-bar mb-md-4" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                             <div class="row">
                                 <div class="col-4 col-md-4 pr-2">
                                     <img src="{{ asset("storage/uploads/$news->image") }}">
@@ -310,7 +310,7 @@
                        @endforeach
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-lg-4 ">
                         @foreach (mainNews($section->position, 6, 4) as $news)
                         <a class="news-bar" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                             <div class="row">
