@@ -26,7 +26,7 @@ class FrontendController extends Controller
 
         $categories = Category::all();
         $sections = HomeSectionElement::with('category')->get();
-        $featured = News::with('category')->where('on_featured', 1)->where('status', 1)->limit(11)->get();
+        $featured = News::with('category')->where('on_featured', 1)->where('status', 1)->orderBy('id', 'DESC')->limit(11)->get();
         $videos = Video::latest()->limit(5)->get();
 
         $recentNews = News::with('category')->select('title', 'image', 'created_at', 'category_id', 'slug')->latest()->limit(4)->get();

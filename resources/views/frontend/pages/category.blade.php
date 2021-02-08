@@ -32,7 +32,7 @@
                         <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
 
                         <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                        <p>{{ Str::words($news->body, 20, '...') }}
+                        <p>{{ Str::words(strip_tags($news->body), 20, '...') }}
                         </p>
 
                         <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>

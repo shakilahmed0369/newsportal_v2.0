@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="col-md-6 col-12 mt-4 mt-md-0">
                                     <h1>{{ Str::words($news->title, 8) }}</h1>
-                                    <p>{{ Str::words($news->body, 30) }}</p>
+                                    <p>{{ Str::words(strip_tags($news->body), 30) }}</p>
                                     <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                     <div class="col-md-4 mt-4 mt-md-0">
                         <a class="news-box" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}"">
                             <h1>{{ Str::words($news->title, 8) }}</h1>
-                            <p>{{ Str::words($news->body, 30) }}</p>
+                            <p>{{ Str::words(strip_tags($news->body), 30) }}</p>
                             <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y")  }}</small>
                         </a>
                     </div>
@@ -61,7 +61,7 @@
                 <div class="col-md-4 line-right mb-4 mb-lg-0">
                     <a class="news-box" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                         <h1>{{ Str::words($news->title, 8) }}</h1>
-                        <p>{{ Str::words($news->body, 30) }}</p>
+                        <p>{{ Str::words(strip_tags($news->body), 30) }}</p>
                         <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                     </a>
                 </div> 
@@ -227,7 +227,7 @@
                                     <a class="news-box mb-sm-4" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                         <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                                         <h1>{{ Str::words($news->title, 8) }}</h1>
-                                        <p>{{ Str::words($news->body, 25, '...') }}
+                                        <p>{{ Str::words(strip_tags($news->body), 25, '...') }}
                                         </p>
                                         <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
 
@@ -267,7 +267,7 @@
                             <a class="news-box mb-4" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                 <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                                 <h1>{{ Str::words($news->title, 8) }}</h1>
-                                <p>{{ Str::words($news->body, 40) }}</p>
+                                <p>{{ Str::words(strip_tags($news->body), 40) }}</p>
                                 <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                             </a>
                             <div class=" line-bottom mt-0 mt-md-4 mb-4"></div>
@@ -280,7 +280,7 @@
                                     </div>
                                     <div class="col-8 col-md-8 pl-2">
                                         <h1>{{ Str::words($news->title, 8) }}</h1>
-                                        <p class="d-none d-md-block">{{ Str::words($news->body, 15) }}</p>
+                                        <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 15) }}</p>
                                         <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                                     </div>
                                 </div>
@@ -298,7 +298,7 @@
                                 </div>
                                 <div class="col-8 col-md-8 pl-2">
                                     <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                                    <p class="d-none d-md-block">{{ Str::words($news->body, 15, '...') }}
+                                    <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 15, '...') }}
                                     </p>
                                     <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                                 </div>
@@ -319,7 +319,7 @@
                                 </div>
                                 <div class="col-8 col-md-8 pl-2">
                                     <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                                    <p class="d-none d-md-block">{{ Str::words($news->body, 15, '...') }}
+                                    <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 15, '...') }}
                                     </p>
                                     <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                                 </div>
@@ -385,7 +385,7 @@
                             <a class="news-box" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                     <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                                     <h1>{{ Str::words($news->title, 8) }}</h1>
-                                    <p>{{ Str::words($news->body, 25, '...') }}
+                                    <p>{{ Str::words(strip_tags($news->body), 25, '...') }}
                                     </p>
                                     <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                             </a>
@@ -424,7 +424,7 @@
                     <div class="news-box mb-4">
                         <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                         <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                        <p>{{ Str::words($news->body, 80, '...') }}</p>
+                        <p>{{ Str::words(strip_tags($news->body), 80, '...') }}</p>
                         <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                     </div> 
                     </a> 
@@ -441,7 +441,7 @@
                                 </div>
                                 <div class="col-8 col-md-8 pl-2">
                                     <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                                    <p class="d-none d-md-block">{{ Str::words($news->body, 25, '...') }}</p>
+                                    <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 25, '...') }}</p>
                                     <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                                 </div>
                             </div>
@@ -506,7 +506,7 @@
                             <a class="news-box mb-4" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                 <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                                 <h1>{{ Str::words($news->title, 8) }}</h1>
-                                <p>{{ Str::words($news->body, 40) }}</p>
+                                <p>{{ Str::words(strip_tags($news->body), 40) }}</p>
                                 <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                             </a>
                             <div class=" line-bottom mt-0 mt-md-4 mb-4"></div>
@@ -519,7 +519,7 @@
                                     </div>
                                     <div class="col-8 col-md-8 pl-2">
                                         <h1>{{ Str::words($news->title, 8) }}</h1>
-                                        <p class="d-none d-md-block">{{ Str::words($news->body, 15) }}</p>
+                                        <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 15) }}</p>
                                         <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                                     </div>
                                 </div>
@@ -537,7 +537,7 @@
                                 </div>
                                 <div class="col-8 col-md-8 pl-2">
                                     <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                                    <p class="d-none d-md-block">{{ Str::words($news->body, 15, '...') }}
+                                    <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 15, '...') }}
                                     </p>
                                     <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                                 </div>
@@ -558,7 +558,7 @@
                                 </div>
                                 <div class="col-8 col-md-8 pl-2">
                                     <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                                    <p class="d-none d-md-block">{{ Str::words($news->body, 15, '...') }}
+                                    <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 15, '...') }}
                                     </p>
                                     <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                                 </div>
@@ -601,7 +601,7 @@
                             </div>
                             <div class="col-8 col-md-8 pl-2">
                                 <h1> {{ Str::words($news->title, 8, '...') }} </h1>
-                                <p class="d-none d-md-block">{{ Str::words($news->body, 14, '...') }}
+                                <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 14, '...') }}
                                 </p>
                                 <small><i class="fas fa-clock    "></i>{{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                             </div>
@@ -621,7 +621,7 @@
                         <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
 
                         <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                        <p>{{ Str::words($news->body, 25, '...') }}
+                        <p>{{ Str::words(strip_tags($news->body), 25, '...') }}
                         </p>
                         <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                     </a>
@@ -635,7 +635,7 @@
                             </div>
                             <div class="col-8 col-md-8 pl-2">
                                 <h1> {{ Str::words($news->title, 8, '...') }} </h1>
-                                <p class="d-none d-md-block">{{ Str::words($news->body, 14, '...') }}
+                                <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 14, '...') }}
                                 </p>
                                 <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                             </div>
@@ -654,7 +654,7 @@
                             </div>
                             <div class="col-8 col-md-8 pl-2">
                                 <h1> {{ Str::words($news->title, 8, '...') }} </h1>
-                                <p class="d-none d-md-block">{{ Str::words($news->body, 14, '...') }}
+                                <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 14, '...') }}
                                 </p>
                                 <small><i class="fas fa-clock    "></i>{{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                             </div>
@@ -716,7 +716,7 @@
                     <div class="news-box mb-4">
                         <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                         <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                        <p>{{ Str::words($news->body, 80, '...') }}</p>
+                        <p>{{ Str::words(strip_tags($news->body), 80, '...') }}</p>
                         <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                     </div>
                     </a> 
@@ -733,7 +733,7 @@
                             </div>
                             <div class="col-8 col-md-8 pl-2">
                                 <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                                <p class="d-none d-md-block">{{ Str::words($news->body, 25, '...') }}</p>
+                                <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 25, '...') }}</p>
                                 <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                             </div>
                         </div>
@@ -824,7 +824,7 @@
                     <div class="news-box mb-4">
                         <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                         <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                        <p>{{ Str::words($news->body, 80, '...') }}</p>
+                        <p>{{ Str::words(strip_tags($news->body), 80, '...') }}</p>
                         <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                     </div> 
                     </a> 
@@ -841,7 +841,7 @@
                             </div>
                             <div class="col-8 col-md-8 pl-2">
                                 <h1>{{ Str::words($news->title, 8, '...') }}</h1>
-                                <p class="d-none d-md-block">{{ Str::words($news->body, 25, '...') }}</p>
+                                <p class="d-none d-md-block">{{ Str::words(strip_tags($news->body), 25, '...') }}</p>
                                 <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
                             </div>
                         </div>
@@ -883,7 +883,7 @@
                                 <a class="news-box" href="{{ route('frontend.showNews', [$news->category->categorySlug, $news->slug]) }}">
                                     <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
                                     <h1>{{ Str::words($news->title, 8) }}</h1>
-                                    <p>{{ Str::words($news->body, 25, '...') }}
+                                    <p>{{ Str::words(strip_tags($news->body), 25, '...') }}
                                     </p>
                                     <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
 

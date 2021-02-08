@@ -4,7 +4,7 @@
     {{ $news->title .' - '. config('app.name') ?? config('app.name') }}
 @endsection
 @section('description')
-    {{ Str::limit($news->body, 160) ?? Str::limit($webInfo->site_description, 160) }}
+    {{ Str::limit(strip_tags($news->body), 160) ?? Str::limit($webInfo->site_description, 160) }}
 @endsection
 @section('keywords')
     {{ Str::limit($news->meta_tags, 160) }}
@@ -73,7 +73,7 @@
                     <h1> {{ $news->title }} </h1>
                     <small><i class="fas fa-clock    "></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }}</small>
                     <p class="text-justify" style="font-size: 18px;">
-                        {{ $news->body }}
+                        {{ strip_tags($news->body) }}
                     </p>
 
 
@@ -98,7 +98,7 @@
                             <img class="mb-4" src="{{ asset("storage/uploads/$news->image") }}">
 
                             <h1> {{ Str::words($news->title, 8, '...') }} </h1>
-                            <p>{{ Str::words($news->body, 20, '...') }}
+                            <p>{{ Str::words(strip_tags($news->body), 20, '...') }}
                             </p>
 
                             <small><i class="fas fa-clock"></i> {{ bangla_date($news->created_at->timestamp ,"en", "d-m-y") }} </small>
