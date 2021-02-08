@@ -19,14 +19,10 @@
                     </ul>
                     <br>
 
-
-                    <a href="page/about-us" class="btn hyper-link"><i class="fas fa-newspaper"></i> About Us</a> &nbsp; &nbsp;
-                    <a href="page/contact-us" class="btn hyper-link"><i class="fas fa-phone"></i> Contact Us</a> &nbsp; &nbsp;
-                    <a href="page/privacy-policy" class="btn hyper-link">Privacy Policy</a> &nbsp; &nbsp;
-
-
-                    <a href="page/terms-of-service" class="btn hyper-link"> Terms of Service</a> &nbsp; &nbsp;
-                    <a href="page/disclaimer" class="btn hyper-link"> Disclaimer </a>
+                    @foreach (pages() as $page)
+                    <a href="{{ route('frontend.page', $page->slug) }}" class="btn hyper-link"><b>{{ $page->title }}</b></a> &nbsp; &nbsp;
+                    @endforeach
+                    
 
                 </div>
             </div>

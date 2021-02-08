@@ -65,6 +65,7 @@ class PageController extends Controller
 
         $page = new Page();
         $page->title = $request->title;
+        $page->slug = makeSlug($request->title);
         $page->content = $request->content;
         $page->save();
         toast('Page published Successfully!', 'success');
@@ -111,6 +112,7 @@ class PageController extends Controller
 
         $page = Page::find($id);
         $page->title = $request->title;
+        $page->slug = makeSlug($request->title);
         $page->content = $request->content;
         $page->save();
         toast('Page updated Successfully!', 'success');

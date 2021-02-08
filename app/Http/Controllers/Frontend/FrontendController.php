@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\HomeSectionElement;
 use App\Models\News;
+use App\Models\Page;
 use App\Models\Video;
 use App\Models\Webinfo;
 use Illuminate\Http\Request;
@@ -100,6 +101,16 @@ class FrontendController extends Controller
         return view('frontend.pages.search', compact('webInfo', 'newses', 'recentNews', 'categories', 'mostReaded'));
     }
 
+
+    //page query
+    public function page($slug)
+    {
+        //site meta info
+        $webInfo = Webinfo::first();
+        $categories = Category::all();
+        $page = Page::where('slug', $slug)->first();
+        return view('frontend.pages.page', compact('page', 'webInfo', 'categories'));
+    }
  
     
 }

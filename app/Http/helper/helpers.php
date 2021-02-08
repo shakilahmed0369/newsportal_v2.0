@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\ContactInfo;
 use App\Models\News;
 use App\Models\HomeSectionElement;
+use App\Models\Page;
 use App\Models\Webinfo;
 use App\Models\Webproperties;
 
@@ -36,7 +37,6 @@ function makeSlug($string, $separator = '-') {
 // helper query for (frontend) home index
 function mainNews($catId, $offset, $limit){
   $news = News::with('category')->where('category_id', $catId)->where('status', 1)->offset($offset)->limit($limit)->latest()->get();
- 
   return $news;
 }
 // breaking news
@@ -66,12 +66,16 @@ function contactInfo(){
   $contacinfo = ContactInfo::first();
   return $contacinfo;
 }
-
+//footer category
 function footer_cat(){
   $contacinfo = Category::all();
   return $contacinfo;
 }
-
+//
+function pages(){
+  $page = Page::all();
+  return $page;
+}
 
 
 
