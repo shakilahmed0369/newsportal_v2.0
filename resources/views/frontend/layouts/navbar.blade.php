@@ -7,7 +7,7 @@
                     <ul class="list-inline text-white top_head_left_part my-1">
                     <li class="list-inline-item pr-2">{{ contactInfo()->city }}, {{ contactInfo()->country }} </li>
                     <li class="list-inline-item pr-2">{{ bangla_date(time() ,"en", "d m y") }},   {{ bangla_date(time() ,"bn", "d m y") }} <br></li>
-                    <li class="list-inline-item pr-2"><a class="text-decoration-none text-white" href="https://www.jugantor.com/todays-paper">আজকের পত্রিকা</a></li>
+                    <li class="list-inline-item pr-2"><a class="text-decoration-none text-white" >আজকের পত্রিকা</a></li>
 
                     </ul>
                     </div>
