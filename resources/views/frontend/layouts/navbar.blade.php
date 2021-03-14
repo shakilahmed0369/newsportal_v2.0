@@ -7,7 +7,7 @@
                     <ul class="list-inline text-white top_head_left_part my-1">
                     <li class="list-inline-item pr-2">{{ contactInfo()->city }}, {{ contactInfo()->country }} </li>
                     <li class="list-inline-item pr-2">{{ bangla_date(time() ,"en", "d m y") }},   {{ bangla_date(time() ,"bn", "d m y") }} <br></li>
-                    <li class="list-inline-item pr-2"><a class="text-decoration-none text-white" >আজকের পত্রিকা</a></li>
+                    <li class="list-inline-item pr-2"><a class="text-decoration-none text-white">আজকের পত্রিকা</a></li>
 
                     </ul>
                     </div>
@@ -25,7 +25,6 @@
         </div>
 
 
-
     <nav class="navbar navbar-expand-xl navbar-light bg-light p-1">
         <div class="container">
             <a class="navbar-brand" href="/">
@@ -41,13 +40,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('frontend.showByCategory', $category->categorySlug) }}"> {{ $category->categoryName }}</a>
                         </li>
-                    @endif
-                    
+                    @endif    
                     @endforeach
                     
 
                     <li class="nav-item dropdown position-static">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> আরও</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">আরও</a>
                         
                         <div style="box-shadow: 0 1px 2px rgba(0,0,0,0.3); border-radius: 0px; margin-top: 5px" class="dropdown-menu w-100 top-auto py-4" aria-labelledby="dropdownId">
                         
